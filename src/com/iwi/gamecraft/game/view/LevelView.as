@@ -51,7 +51,13 @@ package com.iwi.gamecraft.game.view
 		private function checkCamera():void
 		{
 //			var local:Point = new Point();
-			
+			if(_character.x > StageSize.WIDTH/2)
+			{
+				x = - _character.x + StageSize.WIDTH / 2;
+				if(x > 0)
+					x = 0;
+				trace(' camer a x ', x);
+			}
 		}
 		
 		private function checkCollision():void
