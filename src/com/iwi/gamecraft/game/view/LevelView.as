@@ -92,7 +92,7 @@ package com.iwi.gamecraft.game.view
 			if(checkCharacter.currentPlatform)
 			{
 //				trace('char x ', _character.x, _character.currentPlatform.x);
-				if(checkCharacter.x < checkCharacter.currentPlatform.x || checkCharacter.x > checkCharacter.currentPlatform.x + checkCharacter.currentPlatform.platformWidth)
+				if(checkCharacter.x + checkCharacter.width < checkCharacter.currentPlatform.x || checkCharacter.x > checkCharacter.currentPlatform.x + checkCharacter.currentPlatform.platformWidth)
 				{
 					checkCharacter.fall();
 					return;
@@ -102,7 +102,7 @@ package com.iwi.gamecraft.game.view
 			for (var i:int = 0;i < len; i++)
 			{
 				var platform:Platform = _platformView.platforms[i];
-				if(checkCharacter.x > platform.x && checkCharacter.x < platform.x + platform.platformWidth)
+				if(checkCharacter.x + checkCharacter.width> platform.x && checkCharacter.x < platform.x + platform.platformWidth)
 				{
 					if(checkCharacter.prevY < platform.y && checkCharacter.y >= platform.y)
 					{

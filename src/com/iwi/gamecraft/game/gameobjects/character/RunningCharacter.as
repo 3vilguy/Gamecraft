@@ -13,7 +13,7 @@ package com.iwi.gamecraft.game.gameobjects.character
 		private var _platforms:PlatformView;
 
 		private var currentPlatformIndex:int;
-		private var VERTICAL_SPEED:Number = 4;
+		private var VERTICAL_SPEED:Number = 8;
 		private var _targetIndex:int;
 		private var _targetPlatform:Platform;
 		public function RunningCharacter(platforms:PlatformView)
@@ -53,7 +53,7 @@ package com.iwi.gamecraft.game.gameobjects.character
 //			trace('target ' + _targetIndex, currentPlatformIndex, currentPlatform);
 			if(_targetPlatform && x > _targetPlatform.x + _targetPlatform.platformWidth - 100)
 				AutoMoveController(_moveController).moveRight(false);
-			if(x > currentPlatform.x + currentPlatform.platformWidth - 50)
+			if(x > currentPlatform.x + currentPlatform.platformWidth - 10)
 			{
 				_moveController.jump();
 				currentPlatform.hide(true);

@@ -59,7 +59,7 @@ package com.iwi.gamecraft.game.gameobjects.platform
 		
 		public function hide(param0:Boolean):void
 		{
-			visible = param0;
+//			visible = param0;
 		}
 	}
 }
