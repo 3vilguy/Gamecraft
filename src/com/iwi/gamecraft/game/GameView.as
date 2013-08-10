@@ -26,7 +26,8 @@ package com.iwi.gamecraft.game
 		private var scoreView:HiScoreView;
 		
 		private var chaseMessage:ChaseMessage;
-						
+		
+		
 		public function GameView()
 		{
 			super();
@@ -83,6 +84,8 @@ package com.iwi.gamecraft.game
 		{
 			Starling.juggler.remove(this);
 			dispatchEventWith(Game.GAME_OVER, true, "classic");
+			removeFromParent(true);
+			destroy();
 		}
 		
 		public function advanceTime(delta:Number):void
@@ -118,6 +121,15 @@ package com.iwi.gamecraft.game
 		public function stopBackingTrack():void
 		{
 			
+		}
+		
+		public function destroy():void
+		{
+			if(levelView)
+			{
+				levelView.removeFromParent(true);
+				levelView.destroy();
+			}
 		}
 	}
 }

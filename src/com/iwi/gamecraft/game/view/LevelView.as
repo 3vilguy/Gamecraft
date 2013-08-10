@@ -146,9 +146,48 @@ package com.iwi.gamecraft.game.view
 			}
 		}
 		
-		public function destroy():void
+		override public function destroy():void
 		{
-			removeChildren(0, numChildren)
+			removeChildren(0, numChildren);
+			
+			if(_character)
+			{
+				_character.removeFromParent();
+				_character.destroy();
+				_character = null;
+			}
+			
+			if(autoCharacter)
+			{
+				autoCharacter.removeFromParent();
+				autoCharacter.destroy();
+				autoCharacter = null;
+			}
+			
+			if(_platformView)
+			{
+				_platformView.removeFromParent(true);
+				_platformView.destroy();
+				_platformView = null;
+			}
+			
+			_levelController = null;
+			_projectileCreator = null;
+			
+			if(_bgScroller)
+			{
+				_bgScroller.removeFromParent(true);
+				_bgScroller.destroy();
+				_bgScroller = null;
+			}
+			
+			if(sigComplete)
+			{
+				sigComplete.removeAll();
+				sigComplete = null;
+			}
+			
+			super.destroy();
 		}
 
 		public function get platformContainer():Sprite

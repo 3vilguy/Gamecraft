@@ -156,5 +156,16 @@ package com.iwi.gamecraft.game.gameobjects.platform
 		{
 			_hiddingSpots = value;
 		}
+		
+		
+		public function destroy():void
+		{
+			if(_platforms && _platforms.length)
+			{
+				closestPlatform.removeFromParent(true);
+				closestPlatform.destroy();
+			}
+			_platforms = null;
+		}
 	}
 }

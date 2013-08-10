@@ -124,5 +124,16 @@ package com.iwi.gamecraft.game.gameobjects.character
 			
 		}
 		
+		
+		override public function destroy():void
+		{
+			if(charImg)
+			{
+				charImg.removeFromParent(true);
+				charImg = null;
+			}
+			
+			super.destroy();
+		}
 	}
 }
