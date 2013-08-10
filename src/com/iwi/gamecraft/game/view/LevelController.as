@@ -22,7 +22,8 @@ package com.iwi.gamecraft.game.view
 		
 		private function init():void
 		{
-			_platforms.getNext
+			_platforms.getNextHiddingSpot(_currentHiddingSpot);
+			_currentHiddingSpot++;
 		}
 	}
 }

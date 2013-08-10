@@ -15,6 +15,7 @@ package com.iwi.gamecraft.game.view
 		
 		private var autoCharacter:RunningCharacter;
 		private var _currentLevel:int;
+		private var _levelController:LevelController;
 		
 		
 		
@@ -43,6 +44,9 @@ package com.iwi.gamecraft.game.view
 			
 			autoCharacter = new RunningCharacter(_platformView);
 			addChild(autoCharacter);
+			
+			_levelController = new LevelController(character, autoCharacter, _platformView);
+			
 		}
 		
 		public function tick(frames:int):void
