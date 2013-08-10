@@ -48,7 +48,8 @@ package
 			
             addEventListener(Menu.START_GAME, onStartGame);
             addEventListener(Game.GAME_OVER,  onGameOver);
-        }
+			addEventListener(GameOverView.MENU,  onSelectMenu);
+		}
         
         public function start(background:Texture, assets:AssetManager):void
         {
@@ -75,7 +76,14 @@ package
             });
         }
         
-        private function onGameOver(event:Event, score:int):void
+		private function onSelectMenu(event:Event):void
+		{
+			trace("Return to Menu");
+			showScene(Menu);
+		}
+
+		
+		private function onGameOver(event:Event, score:int):void
         {
             trace("Game Over! Score: " + score);
             showScene(GameOverView);
