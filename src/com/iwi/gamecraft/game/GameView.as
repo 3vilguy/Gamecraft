@@ -4,7 +4,6 @@ package com.iwi.gamecraft.game
 	import com.iwi.gamecraft.game.gameobjects.character.Character;
 	import com.iwi.gamecraft.game.hiscore.HiScoreList;
 	import com.iwi.gamecraft.game.hiscore.HiScoreView;
-	import com.iwi.gamecraft.game.hiscore.Hiscore;
 	import com.iwi.gamecraft.game.view.LevelView;
 	import com.iwi.gamecraft.game.view.scoreInterface.IHiScoreView;
 	

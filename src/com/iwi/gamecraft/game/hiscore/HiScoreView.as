@@ -30,7 +30,7 @@ package com.iwi.gamecraft.game.hiscore
 			
 			textField = new TextField(400, 200, displayString, "Ubuntu", 18, 0x00000);
 			textField.x = (textField.width + 25);
-			textField.y = -20;
+			textField.y = -30;
 			
 			addChild(textField);
 		}

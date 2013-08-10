@@ -28,7 +28,7 @@ package com.iwi.gamecraft.game.factory
 					break;
 				
 				default:
-					return new PlatformView(_levelView);
+					return new PlatformView();
 			}
 			
 			return parseLevelClass(levelClass);
@@ -37,7 +37,7 @@ package com.iwi.gamecraft.game.factory
 		
 		private function parseLevelClass(levelClass:Sprite):PlatformView
 		{
-			var platformView:PlatformView = new PlatformView(_levelView);
+			var platformView:PlatformView = new PlatformView();
 			
 			trace("Ohai Parse =>", levelClass.numChildren, "elements.");
 			
@@ -71,19 +71,20 @@ package com.iwi.gamecraft.game.factory
 			}
 			
 			var lastY:int = StageSize.HEIGHT / 2;
-			for(var i:int = 0; i< 100; i++)
+			for(i = 0; i< 15; i++)
 			{
 				lastY += int(Math.random()*12)%3 == 0 ?  50 : -50;
 				lastY += Math.random() * 50 - 25;
 				if(lastY < 50)
 					lastY = StageSize.HEIGHT - 60;
 				if(lastY > StageSize.HEIGHT - 60)
-					lastY = StageSize.HEIGHT - 120;
+					lastY = StageSize.HEIGHT - 100;
 				platformView.addPlatform(150,20,obj.x + i * 200 + Math.random()*100, lastY, PlatformTypes.PLATFORM_AI, "name");
 			}
 			platformView.aiPlatforms = platformView.aiPlatforms.sort(sortOnName);
 			platformView.hiddingSpots = platformView.hiddingSpots.sort(sortOnName);
 			platformView.flatten();
+			
 			return platformView;
 		}
 		
