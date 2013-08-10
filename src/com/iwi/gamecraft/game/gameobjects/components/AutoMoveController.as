@@ -8,7 +8,7 @@ package com.iwi.gamecraft.game.gameobjects.components
 		public function AutoMoveController()
 		{
 			super();
-			MAX_VEL = 8;
+			MAX_VEL = 9.5;
 		}
 		
 		public function moveRight(value:Boolean):void
@@ -23,7 +23,7 @@ package com.iwi.gamecraft.game.gameobjects.components
 		
 		override protected function handleInput(frames:Number):void
 		{
-			if(isMovingRight)
+			if(isMovingRight || true)
 			{
 				addHorizontalForce(MOVE_RIGHT);
 			}

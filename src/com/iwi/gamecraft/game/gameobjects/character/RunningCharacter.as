@@ -2,11 +2,13 @@ package com.iwi.gamecraft.game.gameobjects.character
 {
 	import com.iwi.gamecraft.game.gameobjects.components.AutoMoveController;
 	import com.iwi.gamecraft.game.gameobjects.components.IMoveController;
+	import com.iwi.gamecraft.game.gameobjects.components.MoveController;
 	import com.iwi.gamecraft.game.gameobjects.platform.Platform;
 	import com.iwi.gamecraft.game.gameobjects.platform.PlatformView;
 	
 	import starling.display.Image;
 	import starling.display.Quad;
+	import starling.textures.Texture;
 
 	public class RunningCharacter extends Character
 	{
@@ -18,6 +20,10 @@ package com.iwi.gamecraft.game.gameobjects.character
 		private var _targetPlatform:Platform;
 		
 		private var charImg:Image;
+
+		private var walkTexture:Texture;
+
+		private var jumpTexture:Texture;
 		
 		public function RunningCharacter(platforms:PlatformView)
 		{
@@ -31,8 +37,9 @@ package com.iwi.gamecraft.game.gameobjects.character
 			var quad:Quad = new Quad(60,60, 0x0000FF);
 			quad.y = - 60;
 			//addChild(quad);
-			
-			charImg = new Image( GameCraft.assetManager.getTexture("man_walk") );
+			walkTexture = GameCraft.assetManager.getTexture("man_walk");
+			jumpTexture = GameCraft.assetManager.getTexture("man_jump");
+			charImg = new Image( walkTexture );
 			charImg.scaleX = scaleY = 0.1;
 			charImg.y = -charImg.height;
 			addChild(charImg);
@@ -80,21 +87,35 @@ package com.iwi.gamecraft.game.gameobjects.character
 			x += _moveController.xSpeed;
 			if(y < currentPlatform.y)
 			{
+				charImg.texture = jumpTexture;
 				y += VERTICAL_SPEED;
 				if(y > currentPlatform.y)
 					y = currentPlatform.y;
 			}
 			else if(y > currentPlatform.y)
 			{	
+				charImg.texture = jumpTexture;
 				y -= VERTICAL_SPEED;
 				if(y < currentPlatform.y)
 					y = currentPlatform.y;
 			}
+			else
+			{
+				charImg.texture = walkTexture;
+			}
 		}
 		
-		override protected function getMoveContorller():IMoveController
+		override protected function getMoveContorller():MoveController
 		{
-			return new AutoMoveController();
+			var moveController:MoveController = new AutoMoveController();
+			moveController.sigJump.add(handleJumpAnim);
+			return moveController;
+		}
+		
+		private function handleJumpAnim():Object
+		{
+			// TODO Auto Generated method stub
+			return null;
 		}
 		override public function set currentPlatform(value:Platform):void
 		{

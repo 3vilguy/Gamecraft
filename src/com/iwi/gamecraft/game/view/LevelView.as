@@ -6,6 +6,7 @@ package com.iwi.gamecraft.game.view
 	import com.iwi.gamecraft.game.gameobjects.character.RunningCharacter;
 	import com.iwi.gamecraft.game.gameobjects.platform.Platform;
 	import com.iwi.gamecraft.game.gameobjects.platform.PlatformView;
+	import com.iwi.gamecraft.game.gameobjects.projectiles.ProjectileCreator;
 	import com.iwi.gamecraft.game.view.background.BackgroundScroller;
 	
 	import starling.display.Sprite;
@@ -19,6 +20,7 @@ package com.iwi.gamecraft.game.view
 		private var autoCharacter:RunningCharacter;
 		private var _currentLevel:int;
 		private var _levelController:LevelController;
+		private var _projectileCreator:ProjectileCreator;
 		
 		private var _platformContainer:Sprite;
 		private var _bgScroller:BackgroundScroller;
@@ -58,7 +60,8 @@ package com.iwi.gamecraft.game.view
 			_platformContainer.addChild(autoCharacter);
 			
 			_levelController = new LevelController(character, autoCharacter, _platformView);
-			
+			_projectileCreator = new ProjectileCreator(autoCharacter, character);
+			addChild(_projectileCreator);
 		}
 		
 		public function tick(frames:int):void
@@ -67,6 +70,7 @@ package com.iwi.gamecraft.game.view
 			_character.tick(frames);
 			autoCharacter.tick(frames);
 			_levelController.tick(frames);
+			_projectileCreator.tick(frames);
 			
 			if(_character.isJumping && _character.y >= StageSize.HEIGHT - _character.height * 2)
 			{
