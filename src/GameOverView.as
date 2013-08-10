@@ -11,6 +11,8 @@ package
 	
 	public class GameOverView extends Sprite implements IHiScoreView
 	{
+		public static const MENU:String = "GameOverview::returnToMenu";
+		
 		private var _sigRestartGame:Signal = new Signal();
 		public function GameOverView()
 		{
@@ -19,8 +21,8 @@ package
 		}
 		
 		private function init():void
-		{
-			var button:Button = new Button(Root.assets.getTexture("button_normal"), "Start");
+		{			
+			var button:Button = new Button(Root.assets.getTexture("button_normal"), "Try Again");
 			button.fontName = "Ubuntu";
 			button.fontSize = 16;
 			button.x = int((Constants.STAGE_WIDTH - button.width) / 2);
@@ -28,11 +30,23 @@ package
 			button.addEventListener(Event.TRIGGERED, onButtonTriggered);
 			addChild(button);
 			
+			var menuButton:Button = new Button(Root.assets.getTexture("button_normal"), "Menu");
+			menuButton.fontName = "Ubuntu";
+			menuButton.fontSize = 16;
+			menuButton.x = int((Constants.STAGE_WIDTH - button.width) / 2);
+			menuButton.y = button.y - menuButton.height - 10;
+			menuButton.addEventListener(Event.TRIGGERED, onMenuButtonTriggered);
+			addChild(menuButton);
 		}
 		
 		private function onButtonTriggered():void
 		{
 			dispatchEventWith(Menu.START_GAME, true, "classic");
+		}
+		
+		private function onMenuButtonTriggered():void
+		{
+			dispatchEventWith(MENU, true, "classic");
 		}
 
 		public function get sigRestartGame():Signal
@@ -44,6 +58,7 @@ package
 		{
 			_sigRestartGame = value;
 		}
+		
 		public function setScoreList(scoreList:HiScoreList):void
 		{
 //			hiScoreListView.setScoreList(scoreList);

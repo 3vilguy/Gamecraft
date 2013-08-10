@@ -13,6 +13,7 @@ package com.iwi.gamecraft.game
 		private static var _keysState:Dictionary;
 		private var _stage:Stage;
 		private static var touch:Boolean;
+		public static var character:String;
 		
 		public function InputController(stage:Stage)
 		{

@@ -1,7 +1,7 @@
 package com.iwi.gamecraft.game.gameobjects.character
 {
+	import com.iwi.gamecraft.game.InputController;
 	import com.iwi.gamecraft.game.gameobjects.components.AutoMoveController;
-	import com.iwi.gamecraft.game.gameobjects.components.IMoveController;
 	import com.iwi.gamecraft.game.gameobjects.components.MoveController;
 	import com.iwi.gamecraft.game.gameobjects.platform.Platform;
 	import com.iwi.gamecraft.game.gameobjects.platform.PlatformView;
@@ -37,8 +37,8 @@ package com.iwi.gamecraft.game.gameobjects.character
 			var quad:Quad = new Quad(60,60, 0x0000FF);
 			quad.y = - 60;
 			//addChild(quad);
-			walkTexture = GameCraft.assetManager.getTexture("man_walk");
-			jumpTexture = GameCraft.assetManager.getTexture("man_jump");
+			walkTexture = GameCraft.assetManager.getTexture(InputController.character + "_walk");
+			jumpTexture = GameCraft.assetManager.getTexture(InputController.character + "_jump");
 			charImg = new Image( walkTexture );
 			charImg.scaleX = scaleY = 0.1;
 			charImg.y = -charImg.height;

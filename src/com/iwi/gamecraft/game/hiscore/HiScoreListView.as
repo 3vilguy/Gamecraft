@@ -1,5 +1,7 @@
 package com.iwi.gamecraft.game.hiscore
 {	
+	import flash.text.engine.TextBaseline;
+	
 	import starling.display.Button;
 	import starling.display.Sprite;
 	import starling.events.Event;
@@ -18,14 +20,36 @@ package com.iwi.gamecraft.game.hiscore
 			hiScoreTextFields = new Array();
 		}
 		
+		public function alignTextField(hiScoreIndex:int, total:int, textField:TextField):void
+		{
+			var width:int = Constants.STAGE_WIDTH / 2;
+
+			if (total < 7)
+			{
+				textField.x = width - (textField.width / 2);
+			}
+			else if (hiScoreIndex < 7)
+			{
+				textField.x = (width / 2) - (textField.width / 2);				
+			}
+			else
+			{
+				textField.x = (width * 3 / 2) - (textField.width / 2);
+			}
+
+			textField.y = (40 * (hiScoreIndex % 7)) + 70;
+		}
+		
 		public function setNewTextField(hiScoreIndex:int):void
 		{
 			var hiscore:Hiscore = hiScoreList.hiScoreArray[hiScoreIndex] as Hiscore;
-			var displayString:String = hiscore.name + " " + hiscore.score;
+			var displayString:String = hiscore.name + " " + int(hiscore.score);
 			
-			var textField:TextField = new TextField(250, 50, displayString, "Desyrel", BitmapFont.NATIVE_SIZE, 0xffffff);
-			textField.x = (Constants.STAGE_WIDTH - textField.width) / 2;
-			textField.y = (40 * hiScoreIndex) + 70;
+			var width:int = Constants.STAGE_WIDTH / 2;
+			
+			var textField:TextField = new TextField(width, 50, displayString, "Desyrel", BitmapFont.NATIVE_SIZE, 0xffffff);
+			alignTextField(hiScoreIndex, hiScoreList.hiScoreArray.length, textField);
+
 			
 			hiScoreTextFields.push(textField);
 			addChild(textField);
@@ -36,16 +60,20 @@ package com.iwi.gamecraft.game.hiscore
 			var i:int = 0;
 			for (; i < hiScoreList.hiScoreArray.length; i++)
 			{
-				if (i >= hiScoreTextFields.length)
+				if (i < 14)
 				{
-					setNewTextField(i);	
-				}
-				else
-				{
-					var hiscore:Hiscore = hiScoreList.hiScoreArray[i] as Hiscore;
-					var displayString:String = hiscore.name + " " + hiscore.score;
+					if (i >= hiScoreTextFields.length)
+					{
+						setNewTextField(i);	
+					}
+					else
+					{
+						var hiscore:Hiscore = hiScoreList.hiScoreArray[i] as Hiscore;
+						var displayString:String = hiscore.name + " " + int(hiscore.score);
 					
-					hiScoreTextFields[i].text = displayString;
+						hiScoreTextFields[i].text = displayString;
+						alignTextField(i, hiScoreList.hiScoreArray.length, hiScoreTextFields[i]);
+					}
 				}
 			}
 			for (; i < hiScoreTextFields.length; i++)

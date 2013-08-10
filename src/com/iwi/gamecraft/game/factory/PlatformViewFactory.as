@@ -4,14 +4,17 @@ package com.iwi.gamecraft.game.factory
 	import com.iwi.gamecraft.game.gameobjects.platform.Platform;
 	import com.iwi.gamecraft.game.gameobjects.platform.PlatformTypes;
 	import com.iwi.gamecraft.game.gameobjects.platform.PlatformView;
+	import com.iwi.gamecraft.game.view.LevelView;
 	
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 
 	public class PlatformViewFactory
 	{
-		public function PlatformViewFactory()
+		private var _levelView:LevelView;
+		public function PlatformViewFactory(levelView:LevelView)
 		{
+			_levelView = levelView;
 		}
 		
 		public function getPlatformView(currentLevel:int):PlatformView
@@ -25,7 +28,7 @@ package com.iwi.gamecraft.game.factory
 					break;
 				
 				default:
-					return new PlatformView();
+					return new PlatformView(_levelView);
 			}
 			
 			return parseLevelClass(levelClass);
@@ -34,7 +37,7 @@ package com.iwi.gamecraft.game.factory
 		
 		private function parseLevelClass(levelClass:Sprite):PlatformView
 		{
-			var platformView:PlatformView = new PlatformView();
+			var platformView:PlatformView = new PlatformView(_levelView);
 			
 			trace("Ohai Parse =>", levelClass.numChildren, "elements.");
 			
