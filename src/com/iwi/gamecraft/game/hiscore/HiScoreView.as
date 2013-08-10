@@ -56,5 +56,15 @@ package com.iwi.gamecraft.game.hiscore
 			}
 			refreshScoreList();
 		}
+		
+		public function playBackingTrack():void
+		{
+			
+		}
+		
+		public function stopBackingTrack():void
+		{
+			
+		}
 	}
 }

@@ -1,5 +1,6 @@
 package
 {
+    import com.iwi.gamecraft.game.audiointerface.IPlaysBackingTrack;
     import com.iwi.gamecraft.game.hiscore.HiScoreList;
     import com.iwi.gamecraft.game.hiscore.Hiscore;
     import com.iwi.gamecraft.game.view.scoreInterface.IHiScoreView;
@@ -89,10 +90,14 @@ package
         private function showScene(screen:Class):void
         {
             if (mActiveScene)
+			{
 				(mActiveScene as Sprite).removeFromParent(true);
+				mActiveScene.stopBackingTrack();
+			}
             mActiveScene = new screen();
 			mActiveScene.setScoreList(hiScoreList);
             addChild(mActiveScene as Sprite);
+			mActiveScene.playBackingTrack();
         }
         
         public static function get assets():AssetManager { return sAssets; }

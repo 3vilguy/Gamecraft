@@ -101,5 +101,15 @@ package com.iwi.gamecraft.game
 		{
 			scoreView.setScoreList(scoreList);		
 		}
+		
+		public function playBackingTrack():void
+		{
+			
+		}
+		
+		public function stopBackingTrack():void
+		{
+			
+		}
 	}
 }
