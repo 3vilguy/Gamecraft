@@ -2,11 +2,16 @@ package
 {
 	import com.iwi.gamecraft.game.GameView;
 	import com.iwi.gamecraft.game.InputController;
+	import com.iwi.gamecraft.game.hiscore.HiScoreList;
+	import com.iwi.gamecraft.game.view.scoreInterface;
+	import com.iwi.gamecraft.game.view.scoreInterface.IHiScoreView;
 	
 	import starling.display.Sprite;
 	
-	public class Game extends Sprite
+	public class Game extends Sprite implements IHiScoreView
 	{
+		private var gameView:GameView;
+		
 		public function Game()
 		{
 			super();
@@ -15,8 +20,14 @@ package
 		
 		private function init():void
 		{
-			var gameView:GameView = new GameView();
+			gameView = new GameView();
 			addChild(gameView);
 		}
+				
+		public function setScoreList(scoreList:HiScoreList):void
+		{
+			gameView.setScoreList(scoreList);			
+		}
+
 	}
 }

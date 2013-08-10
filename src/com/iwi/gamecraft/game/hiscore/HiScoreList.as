@@ -41,6 +41,16 @@ package com.iwi.gamecraft.game.hiscore
 				}
 			}
 		}
+
+		public function contains(hiScore:Hiscore):Boolean
+		{
+			for (var index:int = 0; index < hiScoreArray.length; index++)
+			{
+				if (hiScoreArray[index] == hiScore)
+					return true;
+			}
+			return false;
+		}
 		
 		public function placeOfScore(hiscore:Hiscore):int
 		{

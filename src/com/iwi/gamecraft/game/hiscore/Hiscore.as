@@ -11,9 +11,9 @@ package com.iwi.gamecraft.game.hiscore
 			score = 0;
 		}
 		
-		public function setNewScore(newScore:Number):void
+		public function displayScore():int
 		{
-			score = newScore;
+			return score;
 		}
 	}
 }
