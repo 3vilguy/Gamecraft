@@ -52,7 +52,7 @@ package com.iwi.gamecraft.game.gameobjects.platform
 			
 			_platforms.push(platform);
 			
-			if(PlatformTypes.PLATFORM_HIDDEN)
+			if(platformType == PlatformTypes.PLATFORM_HIDDEN)
 				_hiddingSpots.push(platform);
 			
 			addChild(platform);
@@ -75,5 +75,27 @@ package com.iwi.gamecraft.game.gameobjects.platform
 				return _hiddingSpots[index];
 			return _hiddingSpots[length];
 		}
+
+		public function get aiPlatforms():Vector.<Platform>
+		{
+			return _aiPlatforms;
+		}
+
+		public function set aiPlatforms(value:Vector.<Platform>):void
+		{
+			_aiPlatforms = value;
+		}
+
+		public function get hiddingSpots():Array
+		{
+			return _hiddingSpots;
+		}
+
+		public function set hiddingSpots(value:Array):void
+		{
+			_hiddingSpots = value;
+		}
+
+
 	}
 }

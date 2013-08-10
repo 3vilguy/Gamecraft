@@ -1,5 +1,6 @@
 package com.iwi.gamecraft.game.factory
 {
+	import com.iwi.gamecraft.game.gameobjects.platform.Platform;
 	import com.iwi.gamecraft.game.gameobjects.platform.PlatformTypes;
 	import com.iwi.gamecraft.game.gameobjects.platform.PlatformView;
 	
@@ -64,8 +65,18 @@ package com.iwi.gamecraft.game.factory
 					platformView.addPlatform(obj.width, obj.height, obj.x, obj.y, platformType, instanceName);
 				}
 			}
-			
+			platformView.aiPlatforms = platformView.aiPlatforms.sort(sortOnName);
+			platformView.hiddingSpots = platformView.hiddingSpots.sort(sortOnName);
 			return platformView;
+		}
+		
+		private function sortOnName(a:Platform, b:Platform):int
+		{
+			if(a.x > b.x)
+				return 1
+			else if(a.x < b.x)
+				return -1;
+			return 0;
 		}
 	}
 }

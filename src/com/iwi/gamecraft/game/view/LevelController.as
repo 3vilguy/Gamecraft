@@ -61,7 +61,8 @@ package com.iwi.gamecraft.game.view
 			_currentHiddingSpot++;
 		
 			trace('hidding index ', _currentHiddingSpot);
-			_aiCharacter.moveToPlatform( _currentHiddingSpot );
+			trace('hidding index sad ', _platforms.hiddingSpots[_currentHiddingSpot].name);
+			_aiCharacter.moveToPlatform( _platforms.hiddingSpots[_currentHiddingSpot] );
 		}
 		
 		public function tick(frames:int):void
