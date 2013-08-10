@@ -14,7 +14,8 @@ package com.iwi.gamecraft.game.gameobjects.components
 		protected var _ySpeed:Number = 0;
 	
 		public var  MOVE_RIGHT:Number = 1;
-		public var MAX_VEL:Number = 10;
+		public var currentMaxVel:Number = 10;
+		public const MAX_VEL:Number = 10;
 		public var MAX_SPEED:Number = 10;
 		public var SLOW_DOWN_X:Number = 1;
 		
@@ -112,8 +113,8 @@ package com.iwi.gamecraft.game.gameobjects.components
 		{
 			slowDown();
 			xSpeed += _xForce;
-			xSpeed = Math.min(xSpeed, MAX_VEL);
-			xSpeed = Math.max(xSpeed, -MAX_VEL);
+			xSpeed = Math.min(xSpeed, currentMaxVel);
+			xSpeed = Math.max(xSpeed, -currentMaxVel);
 			
 			ySpeed += _yForce;
 			ySpeed = Math.min(ySpeed, MAX_VEL_Y);

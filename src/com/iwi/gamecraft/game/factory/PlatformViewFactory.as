@@ -80,6 +80,7 @@ package com.iwi.gamecraft.game.factory
 			}
 			platformView.aiPlatforms = platformView.aiPlatforms.sort(sortOnName);
 			platformView.hiddingSpots = platformView.hiddingSpots.sort(sortOnName);
+			platformView.flatten();
 			return platformView;
 		}
 		

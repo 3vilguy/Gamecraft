@@ -1,5 +1,6 @@
 package com.iwi.gamecraft.game.view
 {
+	import com.iwi.gamecraft.game.InputController;
 	import com.iwi.gamecraft.game.factory.PlatformViewFactory;
 	import com.iwi.gamecraft.game.gameobjects.StageSize;
 	import com.iwi.gamecraft.game.gameobjects.character.Character;
@@ -8,6 +9,8 @@ package com.iwi.gamecraft.game.view
 	import com.iwi.gamecraft.game.gameobjects.platform.PlatformView;
 	import com.iwi.gamecraft.game.gameobjects.projectiles.ProjectileCreator;
 	import com.iwi.gamecraft.game.view.background.BackgroundScroller;
+	
+	import org.osflash.signals.Signal;
 	
 	import starling.display.Sprite;
 
@@ -24,6 +27,7 @@ package com.iwi.gamecraft.game.view
 		
 		private var _platformContainer:Sprite;
 		private var _bgScroller:BackgroundScroller;
+		public var sigComplete:Signal = new Signal(String);
 		
 		
 		
@@ -61,7 +65,7 @@ package com.iwi.gamecraft.game.view
 			
 			_levelController = new LevelController(character, autoCharacter, _platformView);
 			_projectileCreator = new ProjectileCreator(autoCharacter, character);
-			addChild(_projectileCreator);
+			_platformContainer.addChild(_projectileCreator);
 		}
 		
 		public function tick(frames:int):void
@@ -72,14 +76,18 @@ package com.iwi.gamecraft.game.view
 			_levelController.tick(frames);
 			_projectileCreator.tick(frames);
 			
-			if(_character.isJumping && _character.y >= StageSize.HEIGHT - _character.height * 2)
+			if(_character.isJumping && _character.y >= stage.stageHeight)
 			{
 				_character.y = StageSize.HEIGHT - _character.height * 2;
 				_character.stopJumping();
+				sigComplete.dispatch();
+				return;
 			}
 			checkCollision(_character);
 			checkCollision(autoCharacter);
 			checkCamera();
+			
+			InputController.resetTouch()
 		}
 		
 		private function checkCamera():void

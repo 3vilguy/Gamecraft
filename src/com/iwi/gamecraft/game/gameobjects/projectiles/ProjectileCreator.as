@@ -72,6 +72,8 @@ package com.iwi.gamecraft.game.gameobjects.projectiles
 			var index:int = _projectiles.indexOf(projectile);
 			if(index != -1)
 				_projectiles.splice(index,1);
+			if(projectile.parent)
+				projectile.parent.removeChild(projectile);
 		}
 	}
 }
