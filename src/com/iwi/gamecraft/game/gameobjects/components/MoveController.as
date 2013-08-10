@@ -18,9 +18,9 @@ package com.iwi.gamecraft.game.gameobjects.components
 		private var MAX_SPEED:Number = 10;
 		private var SLOW_DOWN_X:Number = 1;
 		
-		private static const MOVE_UP:Number = 35;
-		private var MAX_VEL_Y:Number = 35;
-		private var SLOW_DOWN_Y:Number = 3.7;
+		private static const MOVE_UP:Number = 22;
+		private var MAX_VEL_Y:Number = 30;
+		private var SLOW_DOWN_Y:Number = 1.1;
 		private var _isJumping:Boolean;
 		
 		private var _sigJump:Signal;
