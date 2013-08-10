@@ -18,9 +18,9 @@ package com.iwi.gamecraft.game.gameobjects.components
 		private var MAX_SPEED:Number = 10;
 		private var SLOW_DOWN_X:Number = 1;
 		
-		private static const MOVE_UP:Number = 15;
-		private var MAX_VEL_Y:Number = 20;
-		private var SLOW_DOWN_Y:Number = 0.5;
+		private static const MOVE_UP:Number = 22;
+		private var MAX_VEL_Y:Number = 30;
+		private var SLOW_DOWN_Y:Number = 1.1;
 		private var _isJumping:Boolean;
 		
 		private var _sigJump:Signal;
@@ -84,6 +84,7 @@ package com.iwi.gamecraft.game.gameobjects.components
 		{
 			_yForce += force;
 			_isJumping = true;
+			_sigJump.dispatch();
 		}
 		
 		
@@ -117,7 +118,7 @@ package com.iwi.gamecraft.game.gameobjects.components
 			ySpeed += _yForce;
 			ySpeed = Math.min(ySpeed, MAX_VEL_Y);
 			ySpeed = Math.max(ySpeed, -MAX_VEL_Y);
-			trace('vel ' + xSpeed);
+//			trace('vel ' + xSpeed);
 		}
 		
 		private function slowDown():void

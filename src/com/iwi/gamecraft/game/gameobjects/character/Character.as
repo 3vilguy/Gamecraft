@@ -62,6 +62,7 @@ package com.iwi.gamecraft.game.gameobjects.character
 		public function fall():void
 		{
 			_moveController.fall();
+			currentPlatform = null;
 		}
 	}
 }
