@@ -80,11 +80,13 @@ package com.iwi.gamecraft.game.view
 			{
 				_character.y = StageSize.HEIGHT - _character.height * 2;
 				_character.stopJumping();
-				sigComplete.dispatch("lool");
+				sigComplete.dispatch("character");
 				return;
 			}
 			checkCollision(_character);
 			checkCollision(autoCharacter);
+			
+			checkCollisionTwo(_character, autoCharacter);
 			checkCamera();
 			
 			InputController.resetTouch()
@@ -144,6 +146,31 @@ package com.iwi.gamecraft.game.view
 				}
 			}
 		}
+		
+		
+		public function checkCollisionTwo(player:Character, player2:Character):void
+		{
+			var len:int = _platformView.platforms.length;
+			
+			if(player.currentPlatform)
+			{
+				//				trace('char x ', _character.x, _character.currentPlatform.x);
+				if(player.x + player.width < player.currentPlatform.x || player.x > player.currentPlatform.x + player.currentPlatform.platformWidth)
+				{
+					player.fall();
+					return;
+				}
+			}
+			
+			if(player.x + player.width> player2.x && player.x < player2.x + player2.width)
+			{
+				if(player.prevY < player2.y && player.y >= player2.y)
+				{
+					sigComplete.dispatch("camera");
+				}
+			}
+		}
+		
 		
 		public function destroy():void
 		{

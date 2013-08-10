@@ -28,8 +28,8 @@ package com.iwi.gamecraft.game.hiscore
 			var	displayString:String = "";
 			displayString += hiScore.score;
 			
-			textField = new TextField(400, 200, displayString, "Desyrel", BitmapFont.NATIVE_SIZE, 0xffffff);
-			textField.x = (Constants.STAGE_WIDTH - textField.width);
+			textField = new TextField(400, 200, displayString, "Ubuntu", 18, 0x00000);
+			textField.x = (textField.width + 25);
 			textField.y = -20;
 			
 			addChild(textField);

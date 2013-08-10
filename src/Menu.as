@@ -1,13 +1,14 @@
 package
 {
 	import com.iwi.gamecraft.game.InputController;
+	import com.iwi.gamecraft.game.audiointerface.IPlaysBackingTrack;
+	import com.iwi.gamecraft.game.audiointerface.SoundManager;
 	import com.iwi.gamecraft.game.hiscore.HiScoreList;
 	import com.iwi.gamecraft.game.hiscore.HiScoreListView;
 	import com.iwi.gamecraft.game.view.scoreInterface.IHiScoreView;
 	
 	import flash.media.Sound;
-	import com.iwi.gamecraft.game.audiointerface.SoundManager;
-	import com.iwi.gamecraft.game.audiointerface.IPlaysBackingTrack;
+	import flash.text.Font;
 	
 	import starling.display.Button;
 	import starling.display.Sprite;
@@ -17,6 +18,10 @@ package
 	
 	public class Menu extends Sprite implements IHiScoreView, IPlaysBackingTrack
 	{
+		// We embed the "Ubuntu" font. Beware: the 'embedAsCFF'-part IS REQUIRED!!!
+		[Embed(source="/fonts/sharkformalfunnyness.ttf", embedAsCFF="false", fontFamily="Ubuntu")]
+		private static const sharko:Class;
+		
 		public static const START_GAME:String = "Menu::startGame";
 		public static const MENU_SONG:String = "Menu song";
 		public static const MENU_SONG_FILE:String = "Cartoon_Journey";
@@ -34,7 +39,9 @@ package
 		{
 			soundManager = new SoundManager();
 
-			var textField:TextField = new TextField(250, 50, "MAIN MENU", "Desyrel", BitmapFont.NATIVE_SIZE, 0xffffff);
+			var font:Font = new sharko();
+			trace('name ', font.fontName);
+			var textField:TextField = new TextField(250, 50, "MAIN MENU", font.fontName,28);
 			textField.x = (Constants.STAGE_WIDTH - textField.width) / 2;
 			textField.y = 20;
 			addChild(textField);

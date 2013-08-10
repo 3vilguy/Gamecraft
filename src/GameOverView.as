@@ -23,7 +23,7 @@ package
 		private function init():void
 		{			
 			var button:Button = new Button(Root.assets.getTexture("button_normal"), "Try Again");
-			button.fontName = "Ubuntu";
+			button.fontName = "newfont";
 			button.fontSize = 16;
 			button.x = int((Constants.STAGE_WIDTH - button.width) / 2);
 			button.y = Constants.STAGE_HEIGHT * 0.75;
@@ -31,7 +31,7 @@ package
 			addChild(button);
 			
 			var menuButton:Button = new Button(Root.assets.getTexture("button_normal"), "Menu");
-			menuButton.fontName = "Ubuntu";
+			menuButton.fontName = "newfont";
 			menuButton.fontSize = 16;
 			menuButton.x = int((Constants.STAGE_WIDTH - button.width) / 2);
 			menuButton.y = button.y - menuButton.height - 10;

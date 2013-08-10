@@ -62,8 +62,8 @@ package
 			var appDir:File = File.applicationDirectory;
 			var assets:AssetManager = new AssetManager(1);
 			GameCraft.assetManager = assets;
-			
-			assets.verbose = Capabilities.isDebugger;
+	assets.verbose = true;		
+//			assets.verbose = Capabilities.isDebugger;
 			assets.enqueue(
 				appDir.resolvePath("audio"),
 				appDir.resolvePath(formatString("fonts/{0}x", 1)),

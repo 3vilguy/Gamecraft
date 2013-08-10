@@ -23,7 +23,7 @@ package com.iwi.gamecraft.game.hiscore
 			var hiscore:Hiscore = hiScoreList.hiScoreArray[hiScoreIndex] as Hiscore;
 			var displayString:String = hiscore.name + " " + hiscore.score;
 			
-			var textField:TextField = new TextField(250, 50, displayString, "Desyrel", BitmapFont.NATIVE_SIZE, 0xffffff);
+			var textField:TextField = new TextField(250, 50, displayString, "Ubuntu", 28, 0xffffff);
 			textField.x = (Constants.STAGE_WIDTH - textField.width) / 2;
 			textField.y = (40 * hiScoreIndex) + 70;
 			
