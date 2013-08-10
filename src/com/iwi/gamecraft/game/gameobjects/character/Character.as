@@ -90,7 +90,7 @@ package com.iwi.gamecraft.game.gameobjects.character
 
 		public function hitMe():void
 		{
-			_moveController.MOVE_RIGHT-=0.5;
+			_moveController.MAX_VEL-=0.5;
 		}
 	}
 }

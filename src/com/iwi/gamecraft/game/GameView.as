@@ -1,5 +1,6 @@
 package com.iwi.gamecraft.game
 {
+	import com.iwi.gamecraft.game.chase.ChaseMessage;
 	import com.iwi.gamecraft.game.gameobjects.character.Character;
 	import com.iwi.gamecraft.game.hiscore.HiScoreList;
 	import com.iwi.gamecraft.game.hiscore.HiScoreView;
@@ -24,11 +25,14 @@ package com.iwi.gamecraft.game
 		private var levelView:LevelView;
 		
 		private var scoreView:HiScoreView;
+		
+		private var chaseMessage:ChaseMessage;
 						
 		public function GameView()
 		{
 			super();
 			scoreView = new HiScoreView();
+			chaseMessage = new ChaseMessage();
 			
 			currentLevel = 1;
 			
@@ -76,8 +80,10 @@ package com.iwi.gamecraft.game
 		public function advanceTime(delta:Number):void
 		{
 			timeSoFar += delta;
+
 			scoreView.hiScore.score += delta;
 			scoreView.refreshScoreList();
+			chaseMessage.refresh(delta);
 			
 			if(timeSoFar >= TICK_TIME)
 			{
