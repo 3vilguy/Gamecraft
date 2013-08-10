@@ -1,17 +1,21 @@
 package com.iwi.gamecraft.game
 {
 	import com.iwi.gamecraft.game.gameobjects.character.Character;
-	import com.iwi.gamecraft.game.view.BaseView;
 	import com.iwi.gamecraft.game.view.LevelView;
 	
+	import starling.animation.IAnimatable;
+	import starling.core.Starling;
 	import starling.display.Sprite;
 	import starling.events.Event;
 	
-	public class GameView extends Sprite
+	public class GameView extends Sprite implements IAnimatable
 	{
-
+		private static const TICK_TIME:Number = 1/60;		//60 fps
+		
+		private var timeSoFar:Number = 0;
+		
 		private var character:Character;
-
+		
 		private var levelView:LevelView;
 		
 		
@@ -53,12 +57,18 @@ package com.iwi.gamecraft.game
 			addChild(levelView);
 
 			levelView.addCharcter(character);
-			addEventListener(Event.ENTER_FRAME, handlEnterFrame);
+			Starling.juggler.add( this );
 		}
 		
-		private function handlEnterFrame():void
+		public function advanceTime(delta:Number):void
 		{
-			levelView.tick(1);
+			timeSoFar += delta;
+			
+			if(timeSoFar >= TICK_TIME)
+			{
+				levelView.tick(1);
+				timeSoFar -= TICK_TIME;
+			}
 		}
 	}
 }

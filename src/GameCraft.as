@@ -1,7 +1,6 @@
 package
 {
 	import flash.desktop.NativeApplication;
-	import com.iwi.gamecraft.game.InputController;
 	import flash.display.Bitmap;
 	import flash.display.Sprite;
 	import flash.display.StageAlign;
@@ -19,6 +18,7 @@ package
 	import starling.utils.ScaleMode;
 	import starling.utils.formatString;
 	
+	[SWF(frameRate="60", backgroundColor="#000000")]
 	public class GameCraft extends Sprite
 	{
 		// Startup image for HD screens
