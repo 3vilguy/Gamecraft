@@ -15,9 +15,10 @@ package
         
         private var mActiveScene:Sprite;
         
+		
         public function Root()
         {
-            //addEventListener(Menu.START_GAME, onStartGame);
+            addEventListener(Menu.START_GAME, onStartGame);
             //addEventListener(Game.GAME_OVER,  onGameOver);
         }
         
