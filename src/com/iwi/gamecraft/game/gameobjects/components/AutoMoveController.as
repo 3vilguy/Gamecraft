@@ -8,6 +8,7 @@ package com.iwi.gamecraft.game.gameobjects.components
 		public function AutoMoveController()
 		{
 			super();
+			MAX_VEL = 8;
 		}
 		
 		public function moveRight(value:Boolean):void

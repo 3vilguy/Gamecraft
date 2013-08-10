@@ -13,6 +13,7 @@ package com.iwi.gamecraft.game.gameobjects.character
 		private var _platforms:PlatformView;
 
 		private var currentPlatformIndex:int;
+		private var VERTICAL_SPEED:Number = 4;
 		public function RunningCharacter(platforms:PlatformView)
 		{
 			super();
@@ -34,7 +35,7 @@ package com.iwi.gamecraft.game.gameobjects.character
 			y = currentPlatform.y;
 			
 			moveOnPlatform(currentPlatform);
-			currentPlatformIndex = 2;
+			currentPlatformIndex = 1;
 		}
 		
 		private function moveOnPlatform(newPlatform:Platform):void
@@ -52,9 +53,29 @@ package com.iwi.gamecraft.game.gameobjects.character
 				currentPlatform = _platforms.platforms[currentPlatformIndex];
 				currentPlatformIndex++;
 			}
+				
 			if(x < currentPlatform.x)
 				AutoMoveController(_moveController).moveRight(true);
 			super.tick(frames);
+		}
+		
+		override protected function move():void
+		{
+			prevX = x;
+			prevY = y;
+			x += _moveController.xSpeed;
+			if(y < currentPlatform.y)
+			{
+				y += VERTICAL_SPEED;
+				if(y > currentPlatform.y)
+					y = currentPlatform.y;
+			}
+			else if(y > currentPlatform.y)
+			{	
+				y -= VERTICAL_SPEED;
+				if(y < currentPlatform.y)
+					y = currentPlatform.y;
+			}
 		}
 		
 		override protected function getMoveContorller():IMoveController

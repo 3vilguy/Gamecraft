@@ -43,5 +43,9 @@ package com.iwi.gamecraft.game.gameobjects.platform
 		}
 
 		
+		public function getNextHiddingSpot(_currentHiddingSpot:int):void
+		{
+			
+		}
 	}
 }
