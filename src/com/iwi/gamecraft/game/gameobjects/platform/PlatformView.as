@@ -43,7 +43,7 @@ package com.iwi.gamecraft.game.gameobjects.platform
 			if(instanceName) platform.name = instanceName;
 			addChild(platform);
 			_platforms.push(platform);
-			if(_platforms.length%5)
+			if(_platforms.length%2==0)
 				_hiddingSpots.push(platform);
 		}
 		

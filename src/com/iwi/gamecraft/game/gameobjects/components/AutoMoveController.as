@@ -27,6 +27,16 @@ package com.iwi.gamecraft.game.gameobjects.components
 			{
 				addHorizontalForce(MOVE_RIGHT);
 			}
+			else
+			{
+				_xForce = 0;
+			}
+		}
+		
+		public static function stop():void
+		{
+			// TODO Auto Generated method stub
+			
 		}
 	}
 }

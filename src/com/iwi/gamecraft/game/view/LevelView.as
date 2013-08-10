@@ -54,6 +54,7 @@ package com.iwi.gamecraft.game.view
 			_platformView.tick(frames);
 			_character.tick(frames);
 			autoCharacter.tick(frames);
+			_levelController.tick(frames);
 			
 			if(_character.isJumping && _character.y >= StageSize.HEIGHT - _character.height * 2)
 			{
