@@ -27,6 +27,8 @@ package
 		
 		private var mStarling:Starling;
 		
+		public static var assetManager:AssetManager;
+		
 		
 		public function GameCraft()
 		{
@@ -59,6 +61,7 @@ package
 			
 			var appDir:File = File.applicationDirectory;
 			var assets:AssetManager = new AssetManager(1);
+			GameCraft.assetManager = assets;
 			
 			assets.verbose = Capabilities.isDebugger;
 			assets.enqueue(
