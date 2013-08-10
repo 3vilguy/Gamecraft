@@ -1,29 +1,34 @@
 package com.iwi.gamecraft.game.view
 {
+	import com.iwi.gamecraft.game.factory.PlatformViewFactory;
 	import com.iwi.gamecraft.game.gameobjects.StageSize;
 	import com.iwi.gamecraft.game.gameobjects.character.Character;
 	import com.iwi.gamecraft.game.gameobjects.character.RunningCharacter;
 	import com.iwi.gamecraft.game.gameobjects.platform.Platform;
 	import com.iwi.gamecraft.game.gameobjects.platform.PlatformView;
-	
-	import flash.geom.Point;
 
 	public class LevelView extends BaseView
 	{
 		private var _character:Character;
 
 		private var _platformView:PlatformView;
-
+		
 		private var autoCharacter:RunningCharacter;
-		public function LevelView()
+		private var _currentLevel:int;
+		
+		
+		
+		public function LevelView(currentLevel:int)
 		{
+			_currentLevel = currentLevel;
+			
 			super();
 			init();
 		}
 		
 		private function init():void
 		{
-			_platformView =  new PlatformView();
+			_platformView = new PlatformViewFactory().getPlatformView(_currentLevel);
 			addChild(_platformView);
 		}
 		

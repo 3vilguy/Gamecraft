@@ -1,5 +1,8 @@
 package
 {
+	import com.iwi.gamecraft.game.hiscore.HiScoreList;
+	import com.iwi.gamecraft.game.hiscore.HiScoreView;
+	
 	import starling.display.Button;
 	import starling.display.Sprite;
 	import starling.events.Event;
@@ -10,6 +13,8 @@ package
 	{
 		public static const START_GAME:String = "Menu::startGame";
 		
+		public var hiScoreView:HiScoreView;
+		public var hiScoreList:HiScoreList;
 		
 		public function Menu()
 		{
@@ -31,11 +36,22 @@ package
 			button.y = Constants.STAGE_HEIGHT * 0.75;
 			button.addEventListener(Event.TRIGGERED, onButtonTriggered);
 			addChild(button);
+			
+			hiScoreList = new HiScoreList();
+			
+			hiScoreView = new HiScoreView();
+			hiScoreView.setScoreList(hiScoreList);
+			addChild(hiScoreView);
 		}
 		
 		private function onButtonTriggered():void
 		{
 			dispatchEventWith(START_GAME, true, "classic");
+		}
+		
+		private function refreshScoreList():void
+		{
+			hiScoreView.refreshScoreList();
 		}
 	}
 }
