@@ -6,6 +6,9 @@ package com.iwi.gamecraft.game.view
 	import com.iwi.gamecraft.game.gameobjects.character.RunningCharacter;
 	import com.iwi.gamecraft.game.gameobjects.platform.Platform;
 	import com.iwi.gamecraft.game.gameobjects.platform.PlatformView;
+	import com.iwi.gamecraft.game.view.background.BackgroundScroller;
+	
+	import starling.display.Sprite;
 
 	public class LevelView extends BaseView
 	{
@@ -16,6 +19,9 @@ package com.iwi.gamecraft.game.view
 		private var autoCharacter:RunningCharacter;
 		private var _currentLevel:int;
 		private var _levelController:LevelController;
+		
+		private var _platformContainer:Sprite;
+		private var _bgScroller:BackgroundScroller;
 		
 		
 		
@@ -29,21 +35,27 @@ package com.iwi.gamecraft.game.view
 		
 		private function init():void
 		{
+			_bgScroller = new BackgroundScroller();
+			addChild(_bgScroller);
+			
+			_platformContainer = new Sprite();
+			addChild(_platformContainer);
+			
 			_platformView = new PlatformViewFactory().getPlatformView(_currentLevel);
-			addChild(_platformView);
+			_platformContainer.addChild(_platformView);
 		}
 		
 		public function addCharcter(character:Character):void
 		{
 			_character = character;
-			addChild(_character);
+			_platformContainer.addChild(_character);
 			var startPlatform:Platform = _platformView.platforms[0];
 			_character.y =  startPlatform.y - 100;
 			_character.x = 10;
 			_character.fall();
 			
 			autoCharacter = new RunningCharacter(_platformView);
-			addChild(autoCharacter);
+			_platformContainer.addChild(autoCharacter);
 			
 			_levelController = new LevelController(character, autoCharacter, _platformView);
 			
@@ -71,9 +83,9 @@ package com.iwi.gamecraft.game.view
 //			var local:Point = new Point();
 			if(_character.x > StageSize.WIDTH/2)
 			{
-				x = - _character.x + StageSize.WIDTH / 2;
-				if(x > 0)
-					x = 0;
+				_platformContainer.x = - _character.x + StageSize.WIDTH / 2;
+				if(_platformContainer.x > 0)
+					_platformContainer.x = 0;
 			}
 			if(_character.y < StageSize.HEIGHT / 2)
 			{
@@ -83,6 +95,8 @@ package com.iwi.gamecraft.game.view
 			{
 				
 			}
+			
+			_bgScroller.moveBg(_platformContainer.x, _platformContainer.y);
 		}
 		
 		private function checkCollision(checkCharacter:Character):void
