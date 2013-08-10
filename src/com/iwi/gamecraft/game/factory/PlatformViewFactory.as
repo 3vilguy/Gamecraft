@@ -76,7 +76,7 @@ package com.iwi.gamecraft.game.factory
 					lastY = StageSize.HEIGHT - 60;
 				if(lastY > StageSize.HEIGHT - 60)
 					lastY = StageSize.HEIGHT - 120;
-				platformView.addPlatform(150,20,obj.x + i * 200 + Math.random()*100, lastY, PlatformTypes.PLATFORM_AI, "");
+				platformView.addPlatform(150,20,obj.x + i * 200 + Math.random()*100, lastY, PlatformTypes.PLATFORM_AI, "name");
 			}
 			platformView.aiPlatforms = platformView.aiPlatforms.sort(sortOnName);
 			platformView.hiddingSpots = platformView.hiddingSpots.sort(sortOnName);

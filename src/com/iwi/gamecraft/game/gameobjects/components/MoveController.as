@@ -13,12 +13,12 @@ package com.iwi.gamecraft.game.gameobjects.components
 		protected var _xSpeed:Number = 0;
 		protected var _ySpeed:Number = 0;
 	
-		protected static const MOVE_RIGHT:Number = 1;
+		public var  MOVE_RIGHT:Number = 1;
 		protected var MAX_VEL:Number = 10;
 		protected var MAX_SPEED:Number = 10;
 		protected var SLOW_DOWN_X:Number = 1;
 		
-		private static const MOVE_UP:Number = 22;
+		public var  MOVE_UP:Number = 22;
 		private var MAX_VEL_Y:Number = 30;
 		private var SLOW_DOWN_Y:Number = 1.1;
 		private var _isJumping:Boolean;
@@ -51,7 +51,7 @@ package com.iwi.gamecraft.game.gameobjects.components
 		
 		protected function handleHorizontalMove():void
 		{
-			if(InputController.keyState(Keyboard.RIGHT))
+			if(InputController.keyState(Keyboard.RIGHT) || true)
 			{
 				addHorizontalForce(MOVE_RIGHT);
 			}
@@ -69,7 +69,7 @@ package com.iwi.gamecraft.game.gameobjects.components
 		{
 			if(_ySpeed == 0)
 			{
-				if(InputController.keyState(Keyboard.SPACE))
+				if(InputController.keyState(Keyboard.UP))
 				{
 					addVerticalForce(-MOVE_UP);
 				}
@@ -80,7 +80,7 @@ package com.iwi.gamecraft.game.gameobjects.components
 			}
 		}
 		
-		protected function addVerticalForce(force:Number):void
+		public function addVerticalForce(force:Number):void
 		{
 			_yForce += force;
 			_isJumping = true;
@@ -96,7 +96,7 @@ package com.iwi.gamecraft.game.gameobjects.components
 		
 		
 		
-		protected function addHorizontalForce(force:Number):void
+		public function addHorizontalForce(force:Number):void
 		{
 			_xForce += force;
 			_xForce = Math.min(MAX_SPEED, _xForce);

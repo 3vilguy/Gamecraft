@@ -9,7 +9,7 @@ package com.iwi.gamecraft.game.gameobjects.character
 	
 	public class Character extends GameObject
 	{
-		protected var _moveController:IMoveController;
+		protected var _moveController:MoveController;
 		public var prevX:Number;
 		public var prevY:Number;
 		private var _currentPlatform:Platform;
@@ -34,7 +34,7 @@ package com.iwi.gamecraft.game.gameobjects.character
 			addChild(quad);
 		}
 		
-		protected function getMoveContorller():IMoveController
+		protected function getMoveContorller():MoveController
 		{
 			var moveController:MoveController = new MoveController();
 			moveController.sigJump.add(handleJump);
@@ -88,5 +88,9 @@ package com.iwi.gamecraft.game.gameobjects.character
 			_currentPlatform = value;
 		}
 
+		public function hitMe():void
+		{
+			_moveController.MOVE_RIGHT-=0.5;
+		}
 	}
 }
