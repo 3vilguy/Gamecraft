@@ -1,0 +1,4 @@
+/build
+/deploy
+/bin-debug
+/bin-debug/*
