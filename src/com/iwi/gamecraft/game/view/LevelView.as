@@ -57,6 +57,8 @@ package com.iwi.gamecraft.game.view
 					{
 						_character.stopJumping();
 						_character.y = platform.y;
+						_character.currentPlatform = platform;
+						break;
 					}
 				}
 			}

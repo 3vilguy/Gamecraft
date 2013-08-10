@@ -21,10 +21,18 @@ package com.iwi.gamecraft.game.gameobjects.components
 		private var SLOW_DOWN_Y:Number = 0.5;
 		private var _isJumping:Boolean;
 		
+		private var _sigJump:Signal;
+		
 		
 		public function MoveController()
 		{
 			super();
+			init();
+		}
+		
+		private function init():void
+		{
+			sigJump = new Signal();
 		}
 
 		override public function tick(frames:int):void
@@ -169,5 +177,16 @@ package com.iwi.gamecraft.game.gameobjects.components
 		{
 			return _isJumping;
 		}
+
+		public function get sigJump():Signal
+		{
+			return _sigJump;
+		}
+
+		public function set sigJump(value:Signal):void
+		{
+			_sigJump = value;
+		}
+
 	}
 }

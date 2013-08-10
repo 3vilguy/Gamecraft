@@ -10,5 +10,7 @@ package com.iwi.gamecraft.game.gameobjects.components
 		function get isJumping():Boolean;
 		
 		function fall():void;
+		
+		function get sigJump():Signal;
 	}
 }
