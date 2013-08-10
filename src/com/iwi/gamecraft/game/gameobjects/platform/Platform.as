@@ -1,6 +1,7 @@
 package com.iwi.gamecraft.game.gameobjects.platform
 {
 	import com.iwi.gamecraft.game.gameobjects.GameObject;
+	import com.iwi.gamecraft.game.powerups.PowerUp;
 	
 	import starling.display.Quad;
 	
@@ -9,6 +10,7 @@ package com.iwi.gamecraft.game.gameobjects.platform
 		private var _platformWidth:int;
 		private var _platformHeight:int;
 		private var _index:int;
+		private var _powerup:PowerUp;
 		
 		public function Platform(width:int, height:int, index:int)
 		{
@@ -17,6 +19,7 @@ package com.iwi.gamecraft.game.gameobjects.platform
 			_platformHeight = height;
 			_index = index;
 			init();
+			generatePowerUp;
 		}
 		
 		private function init():void
@@ -24,6 +27,23 @@ package com.iwi.gamecraft.game.gameobjects.platform
 			var quad:Quad = new Quad(_platformWidth,_platformHeight,0x00FF00);
 			addChild(quad);
 		}
+		
+		private function generatePowerUp():void
+		{
+			if (PowerUp.gapCounter == 0)
+			{
+				if (PowerUp.probability > Math.random())
+				{
+					_powerup = new PowerUp();
+					PowerUp.gapCounter = PowerUp.gap;
+				}
+			}
+			else
+			{
+				PowerUp.gapCounter--;
+			}
+		}
+		
 
 		public function get platformWidth():int
 		{
@@ -53,6 +73,16 @@ package com.iwi.gamecraft.game.gameobjects.platform
 		public function set index(value:int):void
 		{
 			_index = value;
+		}
+		
+		public function hasPowerUp():Boolean
+		{
+			return (_powerup != null);
+		}
+		
+		public function get powerUp():PowerUp
+		{
+			return _powerup;
 		}
 
 		

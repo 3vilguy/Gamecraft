@@ -1,9 +1,8 @@
 package
 {
 	import com.iwi.gamecraft.game.GameView;
-	import com.iwi.gamecraft.game.InputController;
+//	import com.iwi.gamecraft.game.InputController;
 	import com.iwi.gamecraft.game.hiscore.HiScoreList;
-	import com.iwi.gamecraft.game.view.scoreInterface;
 	import com.iwi.gamecraft.game.view.scoreInterface.IHiScoreView;
 	
 	import starling.display.Sprite;
