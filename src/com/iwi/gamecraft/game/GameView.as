@@ -28,6 +28,7 @@ package com.iwi.gamecraft.game
 		public function GameView()
 		{
 			super();
+			scoreView = new HiScoreView();
 			
 			currentLevel = 1;
 			
@@ -92,7 +93,7 @@ package com.iwi.gamecraft.game
 		
 		public function setScoreList(scoreList:HiScoreList):void
 		{
-			scoreView.setScoreList(scoreList);			
+			scoreView.setScoreList(scoreList);		
 		}
 	}
 }
