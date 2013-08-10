@@ -34,11 +34,9 @@ package com.iwi.gamecraft.game.gameobjects.character
 			x = currentPlatform.x + currentPlatform.width / 2;
 			y = currentPlatform.y;
 			
-			moveOnPlatform(currentPlatform);
-			currentPlatformIndex = 1;
 		}
 		
-		private function moveOnPlatform(newPlatform:Platform):void
+		private function moveToPlatform(newPlatform:Platform):void
 		{
 			currentPlatform = newPlatform;
 			AutoMoveController(_moveController).moveRight(true);

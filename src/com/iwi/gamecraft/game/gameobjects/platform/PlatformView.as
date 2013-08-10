@@ -37,7 +37,7 @@ package com.iwi.gamecraft.game.gameobjects.platform
 		
 		public function addPlatform(pWidth:Number, pHeight:Number, px:Number, py:Number, instanceName:String = null):void
 		{
-			var platform:Platform = new Platform(pWidth, pHeight);
+			var platform:Platform = new Platform(pWidth, pHeight, _platforms.length);
 			platform.x = px;
 			platform.y = py;
 			if(instanceName) platform.name = instanceName;
