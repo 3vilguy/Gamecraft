@@ -1,5 +1,6 @@
 package com.iwi.gamecraft.game.gameobjects.character
 {
+	import com.iwi.gamecraft.game.InputController;
 	import com.iwi.gamecraft.game.gameobjects.components.AutoMoveController;
 	import com.iwi.gamecraft.game.gameobjects.components.MoveController;
 	import com.iwi.gamecraft.game.gameobjects.platform.Platform;
@@ -36,9 +37,8 @@ package com.iwi.gamecraft.game.gameobjects.character
 			var quad:Quad = new Quad(60,60, 0x0000FF);
 			quad.y = - 60;
 			//addChild(quad);
-			var gender:String = Math.random() > 1 ? "man" : "woman"
-			walkTexture = GameCraft.assetManager.getTexture(gender + "_walk");
-			jumpTexture = GameCraft.assetManager.getTexture(gender + "_jump");
+			walkTexture = GameCraft.assetManager.getTexture(InputController.character + "_walk");
+			jumpTexture = GameCraft.assetManager.getTexture(InputController.character + "_jump");
 			charImg = new Image( walkTexture );
 			charImg.scaleX = scaleY = 0.1;
 			charImg.y = -charImg.height;

@@ -47,7 +47,7 @@ package com.iwi.gamecraft.game.view
 			_platformContainer = new Sprite();
 			addChild(_platformContainer);
 			
-			_platformView = new PlatformViewFactory().getPlatformView(_currentLevel);
+			_platformView = new PlatformViewFactory(this).getPlatformView(_currentLevel);
 			_platformContainer.addChild(_platformView);
 		}
 		
@@ -149,5 +149,16 @@ package com.iwi.gamecraft.game.view
 		{
 			removeChildren(0, numChildren)
 		}
+
+		public function get platformContainer():Sprite
+		{
+			return _platformContainer;
+		}
+
+		public function set platformContainer(value:Sprite):void
+		{
+			_platformContainer = value;
+		}
+
 	}
 }

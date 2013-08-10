@@ -2,17 +2,26 @@ package com.iwi.gamecraft.game.gameobjects.platform
 {
 	import com.iwi.gamecraft.game.gameobjects.GameObject;
 	import com.iwi.gamecraft.game.gameobjects.StageSize;
+	import com.iwi.gamecraft.game.view.LevelView;
+	
+	import flash.utils.getTimer;
 	
 	public class PlatformView extends GameObject
 	{
 		private var _aiPlatforms:Vector.<Platform>;
 		private var _platforms:Vector.<Platform>;
 		private var _hiddingSpots:Array;
+		private var _levelView:LevelView;
+
+		private var CHECK_TIME:int = 1000;
+
+		private var lastCheck:int;
 		
-		public function PlatformView()
+		public function PlatformView(levelView:LevelView)
 		{
 			super();
 			init();
+			_levelView = levelView;
 		}
 		
 		private function init():void
@@ -35,6 +44,24 @@ package com.iwi.gamecraft.game.gameobjects.platform
 				addChild(platform);
 				_platforms.push(platform);
 			}
+		}
+		
+		public function addRandomPlatform():void
+		{
+//			trace('adding');
+//			var lastY:int = StageSize.HEIGHT / 2;
+//			var lastX:int = _platforms[_platforms.length-1].x;
+//			for(var i:int = 0; i< 100; i++)
+//			{
+//				lastY += int(Math.random()*12)%3 == 0 ?  50 : -50;
+//				lastY += Math.random() * 50 - 25;
+//				if(lastY < 50)
+//					lastY = StageSize.HEIGHT - 60;
+//				if(lastY > StageSize.HEIGHT - 60)
+//					lastY = StageSize.HEIGHT - 120;
+//				addPlatform(150,20,lastX+ i * 200 + Math.random()*100, lastY, PlatformTypes.PLATFORM_AI, "name");
+//			}
+//			flatten();
 		}
 		
 		public function addPlatform(pWidth:Number, pHeight:Number, px:Number, py:Number, platformType:String, instanceName:String = null):void
@@ -74,6 +101,31 @@ package com.iwi.gamecraft.game.gameobjects.platform
 			if(index > _hiddingSpots.length)
 				return _hiddingSpots[index];
 			return _hiddingSpots[length];
+		}
+		
+		override public function tick(frames:int):void
+		{
+			var len:int = _platforms.length;
+			
+			
+			if(getTimer() - lastCheck > CHECK_TIME)
+			{
+//				lastCheck = getTimer();
+//				for(var i:int = 0 ; i< len;i++)
+//				{
+//					var platformItme:Platform = _platforms[i];
+//					if(platformItme.x + platformItme.width < -_levelView.platformContainer.x)
+//					{
+//						if(platformItme.parent)
+//							platformItme.parent.removeChild(platformItme);
+//						_platforms.splice(i,1);
+//						addRandomPlatform();
+//						i--;
+//						len--;
+//					}
+//				}
+			}
+//			trace(" PSO " + _levelView.platformContainer.x + " : : " + (_platforms[0].x + _platforms[0].width));
 		}
 
 		public function get aiPlatforms():Vector.<Platform>

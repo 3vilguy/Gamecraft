@@ -4,6 +4,7 @@ package com.iwi.gamecraft.game.gameobjects.platform
 	import com.iwi.gamecraft.game.powerups.PowerUp;
 	
 	import starling.display.Quad;
+	import starling.events.Event;
 	
 	public class Platform extends GameObject
 	{
@@ -19,6 +20,11 @@ package com.iwi.gamecraft.game.gameobjects.platform
 			_platformHeight = height;
 			_index = index;
 			init();
+			addEventListener(Event.ADDED_TO_STAGE, handleStage)
+		}
+		
+		private function handleStage():void
+		{
 			generatePowerUp();
 		}
 		
@@ -35,6 +41,7 @@ package com.iwi.gamecraft.game.gameobjects.platform
 				if (PowerUp.probability > Math.random())
 				{
 					_powerup = new PowerUp();
+					parent.addChild(_powerup);
 					PowerUp.gapCounter = PowerUp.gap;
 				}
 			}
