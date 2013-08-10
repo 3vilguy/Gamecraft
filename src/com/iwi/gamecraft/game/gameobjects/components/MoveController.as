@@ -3,6 +3,8 @@ package com.iwi.gamecraft.game.gameobjects.components
 	import com.iwi.gamecraft.game.InputController;
 	
 	import flash.ui.Keyboard;
+	
+	import org.osflash.signals.Signal;
 
 	public class MoveController extends BaseComponent implements IMoveController
 	{

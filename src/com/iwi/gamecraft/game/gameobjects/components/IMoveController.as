@@ -1,5 +1,7 @@
 package com.iwi.gamecraft.game.gameobjects.components
 {
+	import org.osflash.signals.Signal;
+
 	public interface IMoveController
 	{
 		function get xSpeed():Number;
