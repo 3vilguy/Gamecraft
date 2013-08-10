@@ -22,7 +22,7 @@ package com.iwi.gamecraft.game
 		private var character:Character;
 		
 		private var currentLevel:int;
-		private var levelView:LevelView;
+		public var levelView:LevelView;
 		
 		private var scoreView:HiScoreView;
 		
@@ -68,6 +68,7 @@ package com.iwi.gamecraft.game
 		private function initLevel():void
 		{
 			levelView = new LevelView(currentLevel);
+			levelView.sigComplete.add(handleLevelComplete);
 			levelView.y = -20;
 			addChild(levelView);
 
@@ -75,6 +76,12 @@ package com.iwi.gamecraft.game
 			Starling.juggler.add( this );
 			
 			addChild(scoreView);
+		}
+		
+		private function handleLevelComplete(result:String):void
+		{
+			Starling.juggler.remove(this);
+			dispatchEventWith(Game.GAME_OVER, true, "classic");
 		}
 		
 		public function advanceTime(delta:Number):void

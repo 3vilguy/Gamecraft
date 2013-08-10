@@ -97,7 +97,7 @@
 
         <!-- Whether the app launches in full screen. Optional. Mobile only. Default false -->
 
-        <fullScreen>true</fullScreen>
+<!--         <fullScreen>true</fullScreen> -->
 
         <!-- The render mode for the app (either auto, cpu, gpu, or direct). Optional. Default auto -->
 
@@ -250,7 +250,7 @@
 			    <!--See the Adobe AIR documentation for more information about setting Google Android permissions-->
 			    <!--Removing the permission android.permission.INTERNET will have the side effect
 		of preventing you from debugging your application on your device-->
-			    <!--<uses-permission android:name="android.permission.INTERNET"/>-->
+			    <uses-permission android:name="android.permission.INTERNET"/>
 			    <!--<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>-->
 			    <!--<uses-permission android:name="android.permission.READ_PHONE_STATE"/>-->
 			    <!--<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>-->

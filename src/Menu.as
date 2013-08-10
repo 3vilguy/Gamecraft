@@ -2,7 +2,6 @@ package
 {
 	import com.iwi.gamecraft.game.hiscore.HiScoreList;
 	import com.iwi.gamecraft.game.hiscore.HiScoreListView;
-//	import com.iwi.gamecraft.game.hiscore.Hiscore;
 	import com.iwi.gamecraft.game.view.scoreInterface.IHiScoreView;
 	
 	import flash.media.Sound;

@@ -71,7 +71,7 @@ package com.iwi.gamecraft.game.gameobjects.character
 			if(x > currentPlatform.x + currentPlatform.platformWidth - 10)
 			{
 				_moveController.jump();
-				currentPlatform.hide(true);
+ 				currentPlatform.hide(true);
 				currentPlatform = _platforms.aiPlatforms[currentPlatformIndex];
 				currentPlatformIndex++;
 				currentPlatform.hide(false);

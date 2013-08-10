@@ -16,8 +16,8 @@ package
 		public static const GAME_SONG_FILE:String = "The_Down_Beat";
 		
 		private var gameView:GameView;
-		private var soundManager:SoundManager;
-
+		public static var GAME_OVER:String = "game over ";
+		
 		public function Game()
 		{
 			super();

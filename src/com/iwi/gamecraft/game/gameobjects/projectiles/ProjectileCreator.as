@@ -62,7 +62,7 @@ package com.iwi.gamecraft.game.gameobjects.projectiles
 				addChild(projectile);
 				projectile.sigRemove.add(handleRemove);
 				projectile.x = _runningCharacter.x + _runningCharacter.width / 2;
-				projectile.y = _runningCharacter.y - _runningCharacter.height + 15;
+				projectile.y = _runningCharacter.y - 50;
 				_projectiles.push(projectile);
 			}
 		}
@@ -72,6 +72,8 @@ package com.iwi.gamecraft.game.gameobjects.projectiles
 			var index:int = _projectiles.indexOf(projectile);
 			if(index != -1)
 				_projectiles.splice(index,1);
+			if(projectile.parent)
+				projectile.parent.removeChild(projectile);
 		}
 	}
 }
