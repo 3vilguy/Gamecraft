@@ -15,6 +15,8 @@ package
 		public static const GAME_SONG:String = "Game song";
 		public static const GAME_SONG_FILE:String = "The_Down_Beat";
 		
+		private var soundManager:SoundManager;
+		
 		private var gameView:GameView;
 		public static var GAME_OVER:String = "game over ";
 		

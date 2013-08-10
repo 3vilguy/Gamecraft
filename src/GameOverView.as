@@ -48,5 +48,13 @@ package
 		{
 //			hiScoreListView.setScoreList(scoreList);
 		}
+		
+		public function playBackingTrack():void
+		{
+		}
+
+		public function stopBackingTrack():void
+		{
+		}
 	}
 }
