@@ -24,11 +24,27 @@ package
         public function Root()
         {
 			hiScoreList = new HiScoreList();
-			var score1:Hiscore = new Hiscore();
-			score1.score = 5;
-			score1.name = "Senar";			
-			hiScoreList.pushScore(score1);
 
+			var paparazzi:Hiscore = new Hiscore();
+			paparazzi.score = 60;
+			paparazzi.name = "Paparazzi";
+			hiScoreList.pushScore(paparazzi);
+
+			var snoop:Hiscore = new Hiscore();
+			snoop.score = 120;
+			snoop.name = "Snoop";
+			hiScoreList.pushScore(snoop);
+
+			var privateEye:Hiscore = new Hiscore();
+			privateEye.score = 180;
+			privateEye.name = "Private Eye";
+			hiScoreList.pushScore(privateEye);
+			
+			var professional:Hiscore = new Hiscore();
+			professional.score = 240;
+			professional.name = "Professional";
+			hiScoreList.pushScore(professional);
+			
             addEventListener(Menu.START_GAME, onStartGame);
             //addEventListener(Game.GAME_OVER,  onGameOver);
         }
