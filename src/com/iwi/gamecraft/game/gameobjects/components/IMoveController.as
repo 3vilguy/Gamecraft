@@ -1,5 +1,7 @@
 package com.iwi.gamecraft.game.gameobjects.components
 {
+	import org.osflash.signals.Signal;
+
 	public interface IMoveController
 	{
 		function get xSpeed():Number;
@@ -10,5 +12,7 @@ package com.iwi.gamecraft.game.gameobjects.components
 		function get isJumping():Boolean;
 		
 		function fall():void;
+		
+		function get sigJump():Signal;
 	}
 }
