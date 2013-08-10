@@ -15,8 +15,8 @@ package com.iwi.gamecraft.game.gameobjects.components
 		protected var _ySpeed:Number = 0;
 	
 		public var  MOVE_RIGHT:Number = 1;
-		public var currentMaxVel:Number = 10;
-		public const MAX_VEL:Number = 10;
+		public var currentMaxVel:Number = 8;
+		public const MAX_VEL:Number = 8;
 		public var MAX_SPEED:Number = 10;
 		public var SLOW_DOWN_X:Number = 1;
 		

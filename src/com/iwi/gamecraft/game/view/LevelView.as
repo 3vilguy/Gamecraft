@@ -76,7 +76,7 @@ package com.iwi.gamecraft.game.view
 			_levelController.tick(frames);
 			_projectileCreator.tick(frames);
 			
-			if(_character.isJumping && _character.y >= stage.stageHeight)
+			if(_character.isJumping && _character.y >= stage.stageHeight + 50)
 			{
 				_character.y = StageSize.HEIGHT - _character.height * 2;
 				_character.stopJumping();
@@ -99,13 +99,17 @@ package com.iwi.gamecraft.game.view
 				if(_platformContainer.x > 0)
 					_platformContainer.x = 0;
 			}
-			if(_character.y < StageSize.HEIGHT / 2)
+//			if(_character.y < StageSize.HEIGHT / 2)
 			{
-				
+//				_platformContainer.y = -_character.y + 240;
+//				if(_platformContainer.y < 0)
+//					_platformContainer.y = 0;
+//				if(_platformContainer.y > 50)
+//					_platformContainer.y = 50;
 			}
-			else
+//			else
 			{
-				
+//				_platformContainer.y = 0;
 			}
 			
 			_bgScroller.moveBg(_platformContainer.x, _platformContainer.y);

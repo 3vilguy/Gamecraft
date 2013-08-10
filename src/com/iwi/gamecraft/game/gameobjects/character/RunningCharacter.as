@@ -1,7 +1,6 @@
 package com.iwi.gamecraft.game.gameobjects.character
 {
 	import com.iwi.gamecraft.game.gameobjects.components.AutoMoveController;
-	import com.iwi.gamecraft.game.gameobjects.components.IMoveController;
 	import com.iwi.gamecraft.game.gameobjects.components.MoveController;
 	import com.iwi.gamecraft.game.gameobjects.platform.Platform;
 	import com.iwi.gamecraft.game.gameobjects.platform.PlatformView;
