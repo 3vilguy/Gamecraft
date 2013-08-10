@@ -26,7 +26,7 @@ package com.iwi.gamecraft.game.gameobjects.platform
 			var platform:Platform;
 			for(var i:int = 0 ; i < 50; i++)
 			{
-				platform = new Platform(400,20);
+				platform = new Platform(400,20, i);
 				platform.x = i * 550;
 				platform.y = StageSize.HEIGHT / 2;
 				platform.y += i%2 ? 40 : 80;
