@@ -2,6 +2,7 @@ package com.iwi.gamecraft.game.view
 {
 	import com.iwi.gamecraft.game.gameobjects.StageSize;
 	import com.iwi.gamecraft.game.gameobjects.character.Character;
+	import com.iwi.gamecraft.game.gameobjects.character.RunningCharacter;
 	import com.iwi.gamecraft.game.gameobjects.platform.Platform;
 	import com.iwi.gamecraft.game.gameobjects.platform.PlatformView;
 	
@@ -12,6 +13,8 @@ package com.iwi.gamecraft.game.view
 		private var _character:Character;
 
 		private var _platformView:PlatformView;
+
+		private var autoCharacter:RunningCharacter;
 		public function LevelView()
 		{
 			super();
@@ -32,19 +35,24 @@ package com.iwi.gamecraft.game.view
 			_character.y =  startPlatform.y - 100;
 			_character.x = 10;
 			_character.fall();
+			
+			autoCharacter = new RunningCharacter(_platformView);
+			addChild(autoCharacter);
 		}
 		
 		public function tick(frames:int):void
 		{
 			_platformView.tick(frames);
 			_character.tick(frames);
+			autoCharacter.tick(frames);
 			
 			if(_character.isJumping && _character.y >= StageSize.HEIGHT - _character.height * 2)
 			{
 				_character.y = StageSize.HEIGHT - _character.height * 2;
 				_character.stopJumping();
 			}
-			checkCollision();
+			checkCollision(_character);
+			checkCollision(autoCharacter);
 			checkCamera();
 		}
 		
@@ -56,20 +64,27 @@ package com.iwi.gamecraft.game.view
 				x = - _character.x + StageSize.WIDTH / 2;
 				if(x > 0)
 					x = 0;
-				trace(' camer a x ', x);
+			}
+			if(_character.y < StageSize.HEIGHT / 2)
+			{
+				
+			}
+			else
+			{
+				
 			}
 		}
 		
-		private function checkCollision():void
+		private function checkCollision(checkCharacter:Character):void
 		{
 			var len:int = _platformView.platforms.length;
 			
-			if(_character.currentPlatform)
+			if(checkCharacter.currentPlatform)
 			{
 //				trace('char x ', _character.x, _character.currentPlatform.x);
-				if(_character.x < _character.currentPlatform.x || _character.x > _character.currentPlatform.x + _character.currentPlatform.platformWidth)
+				if(checkCharacter.x < checkCharacter.currentPlatform.x || checkCharacter.x > checkCharacter.currentPlatform.x + checkCharacter.currentPlatform.platformWidth)
 				{
-					_character.fall();
+					checkCharacter.fall();
 					return;
 				}
 			}
@@ -77,14 +92,13 @@ package com.iwi.gamecraft.game.view
 			for (var i:int = 0;i < len; i++)
 			{
 				var platform:Platform = _platformView.platforms[i];
-				if(_character.x > platform.x && _character.x < platform.x + platform.platformWidth)
+				if(checkCharacter.x > platform.x && checkCharacter.x < platform.x + platform.platformWidth)
 				{
-					trace('got you ' );
-					if(_character.prevY < platform.y && _character.y >= platform.y)
+					if(checkCharacter.prevY < platform.y && checkCharacter.y >= platform.y)
 					{
-						_character.stopJumping();
-						_character.y = platform.y;
-						_character.currentPlatform = platform;
+						checkCharacter.stopJumping();
+						checkCharacter.y = platform.y;
+						checkCharacter.currentPlatform = platform;
 						break;
 					}
 				}

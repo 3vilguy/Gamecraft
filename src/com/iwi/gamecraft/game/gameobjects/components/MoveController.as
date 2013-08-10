@@ -8,22 +8,22 @@ package com.iwi.gamecraft.game.gameobjects.components
 
 	public class MoveController extends BaseComponent implements IMoveController
 	{
-		private var _xForce:Number = 0;
-		private var _yForce:Number = 0;
-		private var _xSpeed:Number = 0;
-		private var _ySpeed:Number = 0;
+		protected var _xForce:Number = 0;
+		protected var _yForce:Number = 0;
+		protected var _xSpeed:Number = 0;
+		protected var _ySpeed:Number = 0;
 	
-		private static const MOVE_RIGHT:Number = 1;
-		private var MAX_VEL:Number = 10;
-		private var MAX_SPEED:Number = 10;
-		private var SLOW_DOWN_X:Number = 1;
+		protected static const MOVE_RIGHT:Number = 1;
+		protected var MAX_VEL:Number = 10;
+		protected var MAX_SPEED:Number = 10;
+		protected var SLOW_DOWN_X:Number = 1;
 		
-		private static const MOVE_UP:Number = 35;
-		private var MAX_VEL_Y:Number = 35;
-		private var SLOW_DOWN_Y:Number = 3.7;
-		private var _isJumping:Boolean;
+		protected static const MOVE_UP:Number = 35;
+		protected var MAX_VEL_Y:Number = 35;
+		protected var SLOW_DOWN_Y:Number = 3.7;
+		protected var _isJumping:Boolean;
 		
-		private var _sigJump:Signal;
+		protected var _sigJump:Signal;
 		
 		
 		public function MoveController()
@@ -32,7 +32,7 @@ package com.iwi.gamecraft.game.gameobjects.components
 			init();
 		}
 		
-		private function init():void
+		protected function init():void
 		{
 			sigJump = new Signal();
 		}
@@ -43,13 +43,13 @@ package com.iwi.gamecraft.game.gameobjects.components
 			move();
 		}
 		
-		private function handleInput(frames:Number):void
+		protected function handleInput(frames:Number):void
 		{
 			handleHorizontalMove();
 			handleVerticalMove();
 		}
 		
-		private function handleHorizontalMove():void
+		protected function handleHorizontalMove():void
 		{
 			if(InputController.keyState(Keyboard.RIGHT))
 			{
@@ -65,7 +65,7 @@ package com.iwi.gamecraft.game.gameobjects.components
 			}
 		}
 		
-		private function handleVerticalMove():void
+		protected function handleVerticalMove():void
 		{
 			if(_ySpeed == 0)
 			{
@@ -80,7 +80,7 @@ package com.iwi.gamecraft.game.gameobjects.components
 			}
 		}
 		
-		private function addVerticalForce(force:Number):void
+		protected function addVerticalForce(force:Number):void
 		{
 			_yForce += force;
 			_isJumping = true;
@@ -88,7 +88,7 @@ package com.iwi.gamecraft.game.gameobjects.components
 		}
 		
 		
-		private function resetVerticalSpeed():void
+		protected function resetVerticalSpeed():void
 		{
 			_yForce = 0;
 		}
@@ -96,19 +96,19 @@ package com.iwi.gamecraft.game.gameobjects.components
 		
 		
 		
-		private function addHorizontalForce(force:Number):void
+		protected function addHorizontalForce(force:Number):void
 		{
 			_xForce += force;
 			_xForce = Math.min(MAX_SPEED, _xForce);
 			_xForce = Math.max(-MAX_SPEED, _xForce);
 		}
 		
-		private function resetSpeed():void
+		protected function resetSpeed():void
 		{
 			_xForce = 0;
 		}
 		
-		private function move():void
+		protected function move():void
 		{
 			slowDown();
 			xSpeed += _xForce;
@@ -118,10 +118,11 @@ package com.iwi.gamecraft.game.gameobjects.components
 			ySpeed += _yForce;
 			ySpeed = Math.min(ySpeed, MAX_VEL_Y);
 			ySpeed = Math.max(ySpeed, -MAX_VEL_Y);
+			resetVerticalSpeed();
 //			trace('vel ' + xSpeed);
 		}
 		
-		private function slowDown():void
+		protected function slowDown():void
 		{
 			if(xSpeed > 0)
 			{
@@ -174,6 +175,12 @@ package com.iwi.gamecraft.game.gameobjects.components
 		{
 			_isJumping = true;
 			_ySpeed = 5;
+		}
+
+		public function jump():void
+		{
+			_isJumping = true;
+			addVerticalForce(-MOVE_UP);
 		}
 		
 		public function get isJumping():Boolean
