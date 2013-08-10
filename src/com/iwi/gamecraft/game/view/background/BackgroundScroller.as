@@ -32,12 +32,12 @@ package com.iwi.gamecraft.game.view.background
 			bgContainer = new Sprite();
 			
 			bg1 = new Image( bgImages[ Math.floor(Math.random() * bgImages.length) ] );
-			bg1.scaleX = bg1.scaleY = 0.67;
+			bg1.scaleX = bg1.scaleY = 0.77;
 			//bg1.y = -50;
 			bgContainer.addChild(bg1);
 			
 			bg2 = new Image( bgImages[ Math.floor(Math.random() * bgImages.length) ] );
-			bg2.scaleX = bg2.scaleY = 0.67;
+			bg2.scaleX = bg2.scaleY = 0.77;
 			bg2.x = bg1.width;
 			//bg2.y = -50;
 			bgContainer.addChild(bg2);
@@ -67,7 +67,7 @@ package com.iwi.gamecraft.game.view.background
 				
 				bg2 = new Image( bgImages[ Math.floor(Math.random() * bgImages.length) ] );
 				//bg2.readjustSize();
-				bg2.scaleX = bg2.scaleY = 0.67;
+				bg2.scaleX = bg2.scaleY = 0.77;
 				bg2.x = bg1.width;
 				//bg2.y = -50;
 				bgContainer.addChild(bg2);
