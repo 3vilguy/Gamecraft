@@ -1,61 +1,59 @@
 package com.iwi.gamecraft.game.hiscore
 {	
+	import com.iwi.gamecraft.game.view.scoreInterface.IHiScoreView;
+	
 	import starling.display.Button;
 	import starling.display.Sprite;
 	import starling.events.Event;
 	import starling.text.BitmapFont;
 	import starling.text.TextField;
 	
-	public class HiScoreView extends Sprite
+	public class HiScoreView extends Sprite implements IHiScoreView
 	{
-		var hiScoreList:HiScoreList;
-		var hiScoreTextFields:Array;
+		public var hiScore:Hiscore;
+		public var hiScoreList:HiScoreList;
+		private var textField:TextField;
 		
 		public function HiScoreView()
 		{
 			super();
-			hiScoreTextFields = new Array();
+			init();
 		}
 		
-		public function setNewTextField(hiScoreIndex:int):void
+		private function init():void
 		{
-			var hiscore:Hiscore = hiScoreList.hiScoreArray[hiScoreIndex] as Hiscore;
-			var displayString:String = hiscore.name + " " + hiscore.score;
-
-			var textField:TextField = new TextField(250, 50, displayString, "Desyrel", BitmapFont.NATIVE_SIZE, 0xffffff);
-			textField.x = (Constants.STAGE_WIDTH - textField.width) / 2;
-			textField.y = (20 * hiScoreIndex) + 70;
-
-			hiScoreTextFields.push(textField);
+			hiScore = new Hiscore();
+			hiScore.name = "Player";
+			
+			var	displayString:String = "";
+			displayString += hiScore.score;
+			
+			textField = new TextField(300, 200, displayString, "Desyrel", BitmapFont.NATIVE_SIZE, 0xffffff);
+			textField.x = (Constants.STAGE_WIDTH - textField.width);
+			textField.y = -20;
+			
 			addChild(textField);
 		}
-		
+				
 		public function refreshScoreList():void
-		{
-			var i:int = 0;
-			for (; i < hiScoreList.hiScoreArray.length; i++)
+		{			
+			var	displayString:String = "";
+			if (hiScoreList != null && hiScoreList.hiScoreArray[0] != hiScore)
 			{
-				if (i > hiScoreTextFields.length)
-				{
-					setNewTextField(i);	
-				}
-				else
-				{
-					var hiscore:Hiscore = hiScoreList.hiScoreArray[i] as Hiscore;
-					var displayString:String = hiscore.name + " " + hiscore.score;
-
-					hiScoreTextFields[i].text = displayString;
-				}
+				displayString += hiScoreList.nameToBeat(hiScore) + " (" + hiScoreList.scoreToBeat(hiScore) + ") to beat!\n";
 			}
-			for (; i < hiScoreTextFields.length; i++)
-			{
-				hiScoreTextFields.pop();
-			}
+			displayString += hiScore.name + "(" + hiScore.displayScore() + ")";
+			textField.text = displayString;
 		}
 		
 		public function setScoreList(scoreList:HiScoreList):void
 		{
 			hiScoreList = scoreList;
+			if (! hiScoreList.contains(hiScore))
+			{
+				hiScore.name = "Player" + hiScoreList.hiScoreArray.length;
+				hiScoreList.pushScore(hiScore);
+			}
 			refreshScoreList();
 		}
 	}

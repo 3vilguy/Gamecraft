@@ -1,14 +1,18 @@
 package com.iwi.gamecraft.game
 {
 	import com.iwi.gamecraft.game.gameobjects.character.Character;
+	import com.iwi.gamecraft.game.hiscore.HiScoreList;
+	import com.iwi.gamecraft.game.hiscore.HiScoreView;
+	import com.iwi.gamecraft.game.hiscore.Hiscore;
 	import com.iwi.gamecraft.game.view.LevelView;
+	import com.iwi.gamecraft.game.view.scoreInterface.IHiScoreView;
 	
 	import starling.animation.IAnimatable;
 	import starling.core.Starling;
 	import starling.display.Sprite;
 	import starling.events.Event;
 	
-	public class GameView extends Sprite implements IAnimatable
+	public class GameView extends Sprite implements IAnimatable, IHiScoreView
 	{
 		private static const TICK_TIME:Number = 1/60;		//60 fps
 		
@@ -19,10 +23,12 @@ package com.iwi.gamecraft.game
 		private var currentLevel:int;
 		private var levelView:LevelView;
 		
-		
+		private var scoreView:HiScoreView;
+						
 		public function GameView()
 		{
 			super();
+			scoreView = new HiScoreView();
 			
 			currentLevel = 1;
 			
@@ -63,17 +69,31 @@ package com.iwi.gamecraft.game
 
 			levelView.addCharcter(character);
 			Starling.juggler.add( this );
+			
+			addChild(scoreView);
 		}
 		
 		public function advanceTime(delta:Number):void
 		{
 			timeSoFar += delta;
+			scoreView.hiScore.score += delta;
+			scoreView.refreshScoreList();
 			
 			if(timeSoFar >= TICK_TIME)
 			{
 				levelView.tick(1);
 				timeSoFar -= TICK_TIME;
 			}
+		}
+		
+		private function refreshScoreList():void
+		{
+			scoreView.refreshScoreList();
+		}
+		
+		public function setScoreList(scoreList:HiScoreList):void
+		{
+			scoreView.setScoreList(scoreList);		
 		}
 	}
 }

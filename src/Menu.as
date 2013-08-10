@@ -1,7 +1,10 @@
 package
 {
 	import com.iwi.gamecraft.game.hiscore.HiScoreList;
-	import com.iwi.gamecraft.game.hiscore.HiScoreView;
+	import com.iwi.gamecraft.game.hiscore.HiScoreListView;
+	import com.iwi.gamecraft.game.hiscore.Hiscore;
+	import com.iwi.gamecraft.game.view.scoreInterface;
+	import com.iwi.gamecraft.game.view.scoreInterface.IHiScoreView;
 	
 	import starling.display.Button;
 	import starling.display.Sprite;
@@ -9,12 +12,11 @@ package
 	import starling.text.BitmapFont;
 	import starling.text.TextField;
 	
-	public class Menu extends Sprite
+	public class Menu extends Sprite implements IHiScoreView
 	{
 		public static const START_GAME:String = "Menu::startGame";
 		
-		public var hiScoreView:HiScoreView;
-		public var hiScoreList:HiScoreList;
+		public var hiScoreListView:HiScoreListView;
 		
 		public function Menu()
 		{
@@ -36,12 +38,9 @@ package
 			button.y = Constants.STAGE_HEIGHT * 0.75;
 			button.addEventListener(Event.TRIGGERED, onButtonTriggered);
 			addChild(button);
-			
-			hiScoreList = new HiScoreList();
-			
-			hiScoreView = new HiScoreView();
-			hiScoreView.setScoreList(hiScoreList);
-			addChild(hiScoreView);
+						
+			hiScoreListView = new HiScoreListView();
+			addChild(hiScoreListView);
 		}
 		
 		private function onButtonTriggered():void
@@ -51,7 +50,12 @@ package
 		
 		private function refreshScoreList():void
 		{
-			hiScoreView.refreshScoreList();
+			hiScoreListView.refreshScoreList();
+		}
+	
+		public function setScoreList(scoreList:HiScoreList):void
+		{
+			hiScoreListView.setScoreList(scoreList);
 		}
 	}
 }

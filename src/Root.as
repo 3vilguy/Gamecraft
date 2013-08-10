@@ -1,5 +1,9 @@
 package
 {
+    import com.iwi.gamecraft.game.hiscore.HiScoreList;
+    import com.iwi.gamecraft.game.hiscore.Hiscore;
+    import com.iwi.gamecraft.game.view.scoreInterface.IHiScoreView;
+    
     import starling.core.Starling;
     import starling.display.Image;
     import starling.display.Sprite;
@@ -13,11 +17,18 @@ package
     {
         private static var sAssets:AssetManager;
         
-        private var mActiveScene:Sprite;
-        
+        private var mActiveScene:IHiScoreView;
+
+		public var hiScoreList:HiScoreList;
 		
         public function Root()
         {
+			hiScoreList = new HiScoreList();
+			var score1:Hiscore = new Hiscore();
+			score1.score = 5;
+			score1.name = "Senar";			
+			hiScoreList.pushScore(score1);
+
             addEventListener(Menu.START_GAME, onStartGame);
             //addEventListener(Game.GAME_OVER,  onGameOver);
         }
@@ -61,9 +72,11 @@ package
         
         private function showScene(screen:Class):void
         {
-            if (mActiveScene) mActiveScene.removeFromParent(true);
+            if (mActiveScene)
+				(mActiveScene as Sprite).removeFromParent(true);
             mActiveScene = new screen();
-            addChild(mActiveScene);
+			mActiveScene.setScoreList(hiScoreList);
+            addChild(mActiveScene as Sprite);
         }
         
         public static function get assets():AssetManager { return sAssets; }
