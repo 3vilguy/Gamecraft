@@ -22,7 +22,7 @@ package
 	public class GameCraft extends Sprite
 	{
 		// Startup image for HD screens
-		[Embed(source="/startupHD.jpg")]
+		[Embed(source="../assets/textures/1x/titlescreen.png")]
 		private static var BackgroundHD:Class;
 		
 		private var mStarling:Starling;

@@ -34,6 +34,9 @@ package
 			{
 				btmp = "win_guy";
 			}
+			var charImg2:Image = new Image( GameCraft.assetManager.getTexture("bg1") );
+			addChild(charImg2);
+
 			var charImg:Image = new Image( GameCraft.assetManager.getTexture(btmp) );
 			addChild(charImg);
 			charImg.x = StageSize.WIDTH / 2 - charImg.width / 2;

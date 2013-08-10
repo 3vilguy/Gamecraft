@@ -82,8 +82,8 @@ package com.iwi.gamecraft.game
 		private function handleLevelComplete(result:String):void
 		{
 			Starling.juggler.remove(this);
-			dispatchEventWith(Game.GAME_OVER, true, "classic");
 			InputController.result = result;
+			dispatchEventWith(Game.GAME_OVER, true, "classic");
 		}
 		
 		public function advanceTime(delta:Number):void
