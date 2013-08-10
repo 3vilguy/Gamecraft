@@ -80,7 +80,7 @@ package com.iwi.gamecraft.game.view
 			{
 				_character.y = StageSize.HEIGHT - _character.height * 2;
 				_character.stopJumping();
-				sigComplete.dispatch();
+				sigComplete.dispatch("lool");
 				return;
 			}
 			checkCollision(_character);
@@ -139,6 +139,11 @@ package com.iwi.gamecraft.game.view
 					}
 				}
 			}
+		}
+		
+		public function destroy():void
+		{
+			removeChildren(0, numChildren)
 		}
 	}
 }

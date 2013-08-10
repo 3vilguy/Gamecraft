@@ -23,6 +23,7 @@ package com.iwi.gamecraft.game.gameobjects.components
 		private var MAX_VEL_Y:Number = 30;
 		private var SLOW_DOWN_Y:Number = 1.1;
 		private var _isJumping:Boolean;
+		private var _isDouleJumping:Boolean;
 		
 		protected var _sigJump:Signal;
 		
@@ -68,10 +69,12 @@ package com.iwi.gamecraft.game.gameobjects.components
 		
 		protected function handleVerticalMove():void
 		{
-			if(_ySpeed == 0)
+			if(_ySpeed == 0 && _isDouleJumping == false)
 			{
 				if(InputController.keyState(Keyboard.UP))
 				{
+					if(isJumping)
+						_isDouleJumping = true;
 					addVerticalForce(-MOVE_UP);
 				}
 			}

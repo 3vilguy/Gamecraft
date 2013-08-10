@@ -67,8 +67,8 @@ package com.iwi.gamecraft.game
 
 		private function initLevel():void
 		{
-			levelView.sigComplete.add(handleLevelComplete);
 			levelView = new LevelView(currentLevel);
+			levelView.sigComplete.add(handleLevelComplete);
 			levelView.y = -20;
 			addChild(levelView);
 
@@ -78,10 +78,10 @@ package com.iwi.gamecraft.game
 			addChild(scoreView);
 		}
 		
-		private function handleLevelComplete():void
+		private function handleLevelComplete(result:String):void
 		{
-			// TODO Auto Generated method stub
-			
+			Starling.juggler.remove(this);
+			dispatchEventWith(Game.GAME_OVER, true, "classic");
 		}
 		
 		public function advanceTime(delta:Number):void

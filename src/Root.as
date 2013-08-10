@@ -46,7 +46,7 @@ package
 			hiScoreList.pushScore(professional);
 			
             addEventListener(Menu.START_GAME, onStartGame);
-            //addEventListener(Game.GAME_OVER,  onGameOver);
+            addEventListener(Game.GAME_OVER,  onGameOver);
         }
         
         public function start(background:Texture, assets:AssetManager):void
@@ -77,7 +77,7 @@ package
         private function onGameOver(event:Event, score:int):void
         {
             trace("Game Over! Score: " + score);
-            showScene(Menu);
+            showScene(GameOverView);
         }
         
         private function onStartGame(event:Event, gameMode:String):void

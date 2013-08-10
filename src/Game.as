@@ -10,6 +10,7 @@ package
 	public class Game extends Sprite implements IHiScoreView
 	{
 		private var gameView:GameView;
+		public static var GAME_OVER:String = "game over ";
 		
 		public function Game()
 		{
