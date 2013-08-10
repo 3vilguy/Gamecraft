@@ -4,9 +4,9 @@ package
 	
 	import starling.display.Sprite;
 	
-	public class Game extends Sprite
+	public class Menu extends Sprite
 	{
-		public function Game()
+		public function Menu()
 		{
 			super();
 			init();
