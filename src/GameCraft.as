@@ -1,6 +1,7 @@
 package
 {
 	import com.bartek.midas.Game;
+	import com.iwi.gamecraft.game.InputController;
 	
 	import flash.display.Sprite;
 	import flash.display.StageAlign;

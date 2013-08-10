@@ -1,6 +1,7 @@
 package
 {
 	import com.iwi.gamecraft.game.GameView;
+	import com.iwi.gamecraft.game.InputController;
 	
 	import starling.display.Sprite;
 	
@@ -16,8 +17,6 @@ package
 		{
 			var gameView:GameView = new GameView();
 			addChild(gameView);
-			
-			
 		}
 	}
 }
