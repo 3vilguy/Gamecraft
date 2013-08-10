@@ -19,7 +19,7 @@ package com.iwi.gamecraft.game.gameobjects.platform
 			_platformHeight = height;
 			_index = index;
 			init();
-			generatePowerUp;
+			generatePowerUp();
 		}
 		
 		private function init():void
