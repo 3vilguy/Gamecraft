@@ -9,7 +9,7 @@ package com.iwi.gamecraft.game.chase
 		public var display:String;
 		private var textField:TextField;
 		private var timeRemaining:Number;
-		private const timeToElapse:Number = 3;
+		private const timeToElapse:Number = 2;
 		
 		public function ChaseMessage()
 		{
@@ -21,7 +21,7 @@ package com.iwi.gamecraft.game.chase
 		{
 			textField = new TextField(300, 200, "", "Desyrel", BitmapFont.NATIVE_SIZE, 0xffffff);
 			textField.x = (Constants.STAGE_WIDTH - textField.width) / 2;
-			textField.y = -20;
+			textField.y = 130;
 			addChild(textField);			
 		}
 		

@@ -51,10 +51,20 @@ package com.iwi.gamecraft.game.hiscore
 			hiScoreList = scoreList;
 			if (! hiScoreList.contains(hiScore))
 			{
-				hiScore.name = "Player" + hiScoreList.hiScoreArray.length;
+				hiScore.name = "Player" + (hiScoreList.hiScoreArray.length - 3);
 				hiScoreList.pushScore(hiScore);
 			}
 			refreshScoreList();
+		}
+		
+		public function playBackingTrack():void
+		{
+			
+		}
+		
+		public function stopBackingTrack():void
+		{
+			
 		}
 	}
 }

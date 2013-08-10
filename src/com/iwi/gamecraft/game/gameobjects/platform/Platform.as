@@ -3,7 +3,11 @@ package com.iwi.gamecraft.game.gameobjects.platform
 	import com.iwi.gamecraft.game.gameobjects.GameObject;
 	import com.iwi.gamecraft.game.powerups.PowerUp;
 	
+	import flash.geom.Point;
+	
+	import starling.display.Image;
 	import starling.display.Quad;
+	import starling.textures.Texture;
 	import starling.events.Event;
 	
 	public class Platform extends GameObject
@@ -32,6 +36,20 @@ package com.iwi.gamecraft.game.gameobjects.platform
 		{
 			var quad:Quad = new Quad(_platformWidth,_platformHeight,0x00FF00);
 			addChild(quad);
+			
+			var texture:Texture = GameCraft.assetManager.getTexture("Tile");
+			texture.repeat = true;
+			var platform:Image = new Image( texture );
+			platform.width = _platformWidth;
+			platform.height = _platformHeight;
+			
+			var tmpWidth:Number = _platformWidth/texture.width;
+			
+			platform.setTexCoords(1, new Point(tmpWidth, 0));
+			platform.setTexCoords(2, new Point(0, 1));
+			platform.setTexCoords(3, new Point(tmpWidth, 1));
+			
+			addChild(platform);
 		}
 		
 		private function generatePowerUp():void

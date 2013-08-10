@@ -5,5 +5,8 @@ package com.iwi.gamecraft.game.view.scoreInterface
 	public interface IHiScoreView
 	{
 		function setScoreList(scoreList:HiScoreList):void;
+		
+		function playBackingTrack():void;
+		function stopBackingTrack():void;
 	}
 }

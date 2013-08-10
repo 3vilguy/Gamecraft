@@ -1,5 +1,6 @@
 package
 {
+    import com.iwi.gamecraft.game.audiointerface.IPlaysBackingTrack;
     import com.iwi.gamecraft.game.hiscore.HiScoreList;
     import com.iwi.gamecraft.game.hiscore.Hiscore;
     import com.iwi.gamecraft.game.view.scoreInterface.IHiScoreView;
@@ -47,7 +48,8 @@ package
 			
             addEventListener(Menu.START_GAME, onStartGame);
             addEventListener(Game.GAME_OVER,  onGameOver);
-        }
+			addEventListener(GameOverView.MENU,  onSelectMenu);
+		}
         
         public function start(background:Texture, assets:AssetManager):void
         {
@@ -74,7 +76,14 @@ package
             });
         }
         
-        private function onGameOver(event:Event, score:int):void
+		private function onSelectMenu(event:Event):void
+		{
+			trace("Return to Menu");
+			showScene(Menu);
+		}
+
+		
+		private function onGameOver(event:Event, score:int):void
         {
             trace("Game Over! Score: " + score);
             showScene(GameOverView);
@@ -89,10 +98,14 @@ package
         private function showScene(screen:Class):void
         {
             if (mActiveScene)
+			{
 				(mActiveScene as Sprite).removeFromParent(true);
+				mActiveScene.stopBackingTrack();
+			}
             mActiveScene = new screen();
 			mActiveScene.setScoreList(hiScoreList);
             addChild(mActiveScene as Sprite);
+			mActiveScene.playBackingTrack();
         }
         
         public static function get assets():AssetManager { return sAssets; }
