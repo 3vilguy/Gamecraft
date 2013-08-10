@@ -33,6 +33,7 @@ package com.iwi.gamecraft.game
 			super();
 			scoreView = new HiScoreView();
 			chaseMessage = new ChaseMessage();
+			chaseMessage.setText("After him!");
 			
 			currentLevel = 1;
 			
@@ -76,6 +77,7 @@ package com.iwi.gamecraft.game
 			Starling.juggler.add( this );
 			
 			addChild(scoreView);
+			addChild(chaseMessage);
 		}
 		
 		private function handleLevelComplete(result:String):void
