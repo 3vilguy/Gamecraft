@@ -2,20 +2,23 @@ package com.iwi.gamecraft.game.gameobjects.character
 {
 	import com.iwi.gamecraft.game.gameobjects.components.AutoMoveController;
 	import com.iwi.gamecraft.game.gameobjects.components.IMoveController;
-	import com.iwi.gamecraft.game.gameobjects.components.MoveController;
 	import com.iwi.gamecraft.game.gameobjects.platform.Platform;
 	import com.iwi.gamecraft.game.gameobjects.platform.PlatformView;
 	
+	import starling.display.Image;
 	import starling.display.Quad;
 
 	public class RunningCharacter extends Character
 	{
-		private var _platforms:PlatformView;
-
-		private var currentPlatformIndex:int;
 		private var VERTICAL_SPEED:Number = 8;
+		
+		private var _platforms:PlatformView;
+		private var currentPlatformIndex:int;
 		private var _targetIndex:int;
 		private var _targetPlatform:Platform;
+		
+		private var charImg:Image;
+		
 		public function RunningCharacter(platforms:PlatformView)
 		{
 			super();
@@ -27,7 +30,12 @@ package com.iwi.gamecraft.game.gameobjects.character
 		{
 			var quad:Quad = new Quad(60,60, 0x0000FF);
 			quad.y = - 60;
-			addChild(quad);
+			//addChild(quad);
+			
+			charImg = new Image( GameCraft.assetManager.getTexture("man_walk") );
+			charImg.scaleX = scaleY = 0.1;
+			charImg.y = -charImg.height;
+			addChild(charImg);
 		}
 		
 		private function init():void
