@@ -28,7 +28,7 @@ package com.iwi.gamecraft.game.factory
 					break;
 				
 				default:
-					return new PlatformView(_levelView);
+					return new PlatformView();
 			}
 			
 			return parseLevelClass(levelClass);
@@ -37,7 +37,7 @@ package com.iwi.gamecraft.game.factory
 		
 		private function parseLevelClass(levelClass:Sprite):PlatformView
 		{
-			var platformView:PlatformView = new PlatformView(_levelView);
+			var platformView:PlatformView = new PlatformView();
 			
 			trace("Ohai Parse =>", levelClass.numChildren, "elements.");
 			
