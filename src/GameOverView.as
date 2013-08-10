@@ -1,6 +1,7 @@
 package
 {
 	import com.iwi.gamecraft.game.InputController;
+	import com.iwi.gamecraft.game.gameobjects.StageSize;
 	import com.iwi.gamecraft.game.hiscore.HiScoreList;
 	import com.iwi.gamecraft.game.view.scoreInterface.IHiScoreView;
 	
@@ -35,6 +36,7 @@ package
 			}
 			var charImg:Image = new Image( GameCraft.assetManager.getTexture(btmp) );
 			addChild(charImg);
+			charImg.x = StageSize.WIDTH / 2 - charImg.width / 2;
 			
 			var button:Button = new Button(Root.assets.getTexture("button_normal"), "Try Again");
 			button.fontName = "newfont";
