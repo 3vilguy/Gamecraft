@@ -1,4 +1,4 @@
-package
+package com.iwi.gamecraft.game.hiscore
 {	
 	public class HiScoreList
 	{

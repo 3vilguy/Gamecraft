@@ -1,7 +1,7 @@
-package
+package com.iwi.gamecraft.game.hiscore
 {
-	public class Hiscore extends Object
-	{		
+	public class Hiscore
+	{
 		public var score:Number;
 		public var name:String;
 
