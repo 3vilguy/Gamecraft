@@ -1,13 +1,13 @@
 package com.iwi.gamecraft.game.view.background
 {
 	import starling.display.Image;
-	import starling.display.QuadBatch;
 	import starling.display.Sprite;
+	import starling.textures.Texture;
 	
 	public class BackgroundScroller extends Sprite
 	{
-		private var bgImages:Vector.<Image>;
-		private var bgQuad:QuadBatch;
+		private var bgImages:Vector.<Texture>;
+		private var bgContainer:Sprite;
 		private var bg1:Image;
 		private var bg2:Image;
 		private var bgWidth:Number;
@@ -25,30 +25,29 @@ package com.iwi.gamecraft.game.view.background
 		
 		private function init():void
 		{
-			bgImages = new Vector.<Image>();
-			bgImages.push( new Image( GameCraft.assetManager.getTexture("bgLevel") ));
-			bgImages.push( new Image( GameCraft.assetManager.getTexture("bgLevel") ));
+			bgImages = new Vector.<Texture>();
+			bgImages.push( GameCraft.assetManager.getTexture("bg1") );
+			bgImages.push( GameCraft.assetManager.getTexture("bg2") );
 			
-			bgQuad = new QuadBatch();
+			bgContainer = new Sprite();
 			
-			bg1 = bgImages[ Math.floor(Math.random() * bgImages.length) ];
-			bg1.readjustSize();
-			bg1.scaleX = bg1.scaleY = 1.3;
-			bg1.y = -50;
-			bgQuad.addImage(bg1);
+			bg1 = new Image( bgImages[ Math.floor(Math.random() * bgImages.length) ] );
+			bg1.scaleX = bg1.scaleY = 0.67;
+			//bg1.y = -50;
+			bgContainer.addChild(bg1);
 			
-			bg2 = bgImages[ Math.floor(Math.random() * bgImages.length) ];
+			bg2 = new Image( bgImages[ Math.floor(Math.random() * bgImages.length) ] );
+			bg2.scaleX = bg2.scaleY = 0.67;
 			bg2.x = bg1.width;
-			bg2.readjustSize();
-			bg2.scaleX = bg2.scaleY = 1.3;
-			bg2.y = -50;
-			bgQuad.addImage(bg2);
+			//bg2.y = -50;
+			bgContainer.addChild(bg2);
 			
-			bgWidth = -bgQuad.width;
+			bgWidth = -bg1.width*2;
 			bgHalfWidth = bgWidth >> 1;
 			
-			addChild(bgQuad);
+			addChild(bgContainer);
 		}
+		
 		
 		public function moveBg(parentX:Number, parentY:Number):void
 		{
@@ -57,18 +56,21 @@ package com.iwi.gamecraft.game.view.background
 			
 			if(currX > prevX)
 			{
-				bgQuad.reset();
+				while(bgContainer.numChildren)
+				{
+					(bgContainer.getChildAt(0) as Image).removeFromParent(true);
+				}
 				
-				bg1 = bg2
+				bg1 = bg2;
 				bg1.x = 0;
-				bgQuad.addImage(bg1);
+				bgContainer.addChild(bg1);
 				
-				bg2 = bgImages[ Math.floor(Math.random() * bgImages.length) ];
+				bg2 = new Image( bgImages[ Math.floor(Math.random() * bgImages.length) ] );
+				//bg2.readjustSize();
+				bg2.scaleX = bg2.scaleY = 0.67;
 				bg2.x = bg1.width;
-				bg2.readjustSize();
-				bg2.scaleX = bg2.scaleY = 1.3;
-				bg2.y = -50;
-				bgQuad.addImage(bg2);
+				//bg2.y = -50;
+				bgContainer.addChild(bg2);
 			}
 			
 			prevX = currX;
