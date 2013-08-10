@@ -58,6 +58,7 @@ package com.iwi.gamecraft.game
 		private function initLevel():void
 		{
 			levelView = new LevelView(currentLevel);
+			levelView.y = -20;
 			addChild(levelView);
 
 			levelView.addCharcter(character);
