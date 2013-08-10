@@ -47,7 +47,7 @@ package com.iwi.gamecraft.game.hiscore
 			
 			var width:int = Constants.STAGE_WIDTH / 2;
 			
-			var textField:TextField = new TextField(width, 50, displayString, "Desyrel", BitmapFont.NATIVE_SIZE, 0xffffff);
+			var textField:TextField = new TextField(width, 50, displayString, "Ubuntu", BitmapFont.NATIVE_SIZE, 0x0c839f);
 			alignTextField(hiScoreIndex, hiScoreList.hiScoreArray.length, textField);
 
 			

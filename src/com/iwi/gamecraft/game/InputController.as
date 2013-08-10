@@ -14,6 +14,7 @@ package com.iwi.gamecraft.game
 		private var _stage:Stage;
 		private static var touch:Boolean;
 		public static var character:String;
+		public static var result:String;
 		
 		public function InputController(stage:Stage)
 		{

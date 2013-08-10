@@ -83,6 +83,7 @@ package com.iwi.gamecraft.game
 		{
 			Starling.juggler.remove(this);
 			dispatchEventWith(Game.GAME_OVER, true, "classic");
+			InputController.result = result;
 		}
 		
 		public function advanceTime(delta:Number):void

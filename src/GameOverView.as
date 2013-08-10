@@ -1,11 +1,13 @@
 package
 {
+	import com.iwi.gamecraft.game.InputController;
 	import com.iwi.gamecraft.game.hiscore.HiScoreList;
 	import com.iwi.gamecraft.game.view.scoreInterface.IHiScoreView;
 	
 	import org.osflash.signals.Signal;
 	
 	import starling.display.Button;
+	import starling.display.Image;
 	import starling.display.Sprite;
 	import starling.events.Event;
 	
@@ -22,6 +24,18 @@ package
 		
 		private function init():void
 		{			
+			var btmp:String 
+			if(InputController.result == "camera")
+			{
+				btmp = "win_camera";
+			}
+			else
+			{
+				btmp = "win_guy";
+			}
+			var charImg:Image = new Image( GameCraft.assetManager.getTexture(btmp) );
+			addChild(charImg);
+			
 			var button:Button = new Button(Root.assets.getTexture("button_normal"), "Try Again");
 			button.fontName = "newfont";
 			button.fontSize = 16;

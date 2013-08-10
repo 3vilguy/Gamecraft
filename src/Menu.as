@@ -11,6 +11,7 @@ package
 	import flash.text.Font;
 	
 	import starling.display.Button;
+	import starling.display.Image;
 	import starling.display.Sprite;
 	import starling.events.Event;
 	import starling.text.BitmapFont;
@@ -39,14 +40,17 @@ package
 		{
 			soundManager = new SoundManager();
 
+			var charImg:Image = new Image( GameCraft.assetManager.getTexture("selecttarget") );
+			addChild(charImg);
+			
 			var font:Font = new sharko();
 			trace('name ', font.fontName);
-			var textField:TextField = new TextField(250, 50, "MAIN MENU", font.fontName,28);
+			var textField:TextField = new TextField(250, 50, "MAIN MENU", font.fontName,28,0x0c839f);
 			textField.x = (Constants.STAGE_WIDTH - textField.width) / 2;
 			textField.y = 20;
 			addChild(textField);
 			
-			var button:Button = new Button(Root.assets.getTexture("button_normal"), "Start Girl");
+			var button:Button = new Button(Root.assets.getTexture("button_normal"), "Start Guy");
 			button.fontName = "Ubuntu";
 			button.fontSize = 16;
 			button.x = int((Constants.STAGE_WIDTH - button.width) / 2) + 180;
@@ -54,7 +58,7 @@ package
 			button.addEventListener(Event.TRIGGERED, onButtonTriggered);
 			addChild(button);
 			
-			var button2:Button = new Button(Root.assets.getTexture("button_normal"), "Start Guy");
+			var button2:Button = new Button(Root.assets.getTexture("button_normal"), "Start Girl");
 			button2.fontName = "Ubuntu";
 			button2.fontSize = 16;
 			button2.x = int((Constants.STAGE_WIDTH - button2.width) / 2) - 180;
