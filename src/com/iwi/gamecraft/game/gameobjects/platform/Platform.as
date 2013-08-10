@@ -8,11 +8,14 @@ package com.iwi.gamecraft.game.gameobjects.platform
 	{
 		private var _platformWidth:int;
 		private var _platformHeight:int;
-		public function Platform(width:int, height:int)
+		private var _index:int;
+		
+		public function Platform(width:int, height:int, index:int)
 		{
 			super();
 			_platformWidth = width;
 			_platformHeight = height;
+			_index = index;
 			init();
 		}
 		
@@ -40,6 +43,16 @@ package com.iwi.gamecraft.game.gameobjects.platform
 		public function set platformHeight(value:int):void
 		{
 			_platformHeight = value;
+		}
+
+		public function get index():int
+		{
+			return _index;
+		}
+
+		public function set index(value:int):void
+		{
+			_index = value;
 		}
 
 		

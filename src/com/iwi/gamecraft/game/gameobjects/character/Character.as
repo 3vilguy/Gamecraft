@@ -3,45 +3,58 @@ package com.iwi.gamecraft.game.gameobjects.character
 	import com.iwi.gamecraft.game.gameobjects.GameObject;
 	import com.iwi.gamecraft.game.gameobjects.components.IMoveController;
 	import com.iwi.gamecraft.game.gameobjects.components.MoveController;
+	import com.iwi.gamecraft.game.gameobjects.platform.Platform;
 	
 	import starling.display.Quad;
-	import com.iwi.gamecraft.game.gameobjects.platform.Platform;
 	
 	public class Character extends GameObject
 	{
-		private var _moveController:IMoveController;
+		protected var _moveController:IMoveController;
 		public var prevX:Number;
 		public var prevY:Number;
-		public var currentPlatform:Platform;
+		private var _currentPlatform:Platform;
 		
 		public function Character()
 		{
 			super();
-			var quad:Quad = new Quad(60,60, 0xFF0000);
-			quad.y = - 60;
-			addChild(quad);
 			init();
 		}
 
-		private function init():void
+		protected function init():void
 		{
-			_moveController = new MoveController();
+			_moveController = getMoveContorller();
+			
+			addGraphic();
+		}
+		
+		protected function addGraphic():void
+		{
+			var quad:Quad = new Quad(60,60, 0xFF0000);
+			quad.y = - 60;
+			addChild(quad);
+		}
+		
+		protected function getMoveContorller():IMoveController
+		{
+			var moveController:MoveController = new MoveController();
+			moveController.sigJump.add(handleJump);
+			return moveController;
 		}
 		
 		override public function tick(frames:int):void
 		{
 			super.tick(frames);
 			_moveController.tick(frames);
-			_moveController.sigJump.add(handleJump);
+			
 			move();
 		}
 		
-		private function handleJump():void
+		protected function handleJump():void
 		{
 			currentPlatform = null;
 		}
 		
-		private function move():void
+		protected function move():void
 		{
 			prevX = x;
 			prevY = y;
@@ -64,5 +77,16 @@ package com.iwi.gamecraft.game.gameobjects.character
 			_moveController.fall();
 			currentPlatform = null;
 		}
+
+		public function get currentPlatform():Platform
+		{
+			return _currentPlatform;
+		}
+
+		public function set currentPlatform(value:Platform):void
+		{
+			_currentPlatform = value;
+		}
+
 	}
 }

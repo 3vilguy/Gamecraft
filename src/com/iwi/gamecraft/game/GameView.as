@@ -20,6 +20,7 @@ package com.iwi.gamecraft.game
 		
 		private var character:Character;
 		
+		private var currentLevel:int;
 		private var levelView:LevelView;
 		
 		private var scoreView:HiScoreView;
@@ -27,7 +28,9 @@ package com.iwi.gamecraft.game
 		public function GameView()
 		{
 			super();
-			scoreView = new HiScoreView();
+			
+			currentLevel = 1;
+			
 			if(stage == null)
 			{
 				addEventListener(Event.ADDED_TO_STAGE, handleStage);
@@ -59,7 +62,8 @@ package com.iwi.gamecraft.game
 
 		private function initLevel():void
 		{
-			levelView = new LevelView();
+			levelView = new LevelView(currentLevel);
+			levelView.y = -20;
 			addChild(levelView);
 
 			levelView.addCharcter(character);
