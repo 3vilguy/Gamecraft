@@ -1,5 +1,6 @@
 package com.iwi.gamecraft.game.factory
 {
+	import com.iwi.gamecraft.game.gameobjects.StageSize;
 	import com.iwi.gamecraft.game.gameobjects.platform.Platform;
 	import com.iwi.gamecraft.game.gameobjects.platform.PlatformTypes;
 	import com.iwi.gamecraft.game.gameobjects.platform.PlatformView;
@@ -64,6 +65,18 @@ package com.iwi.gamecraft.game.factory
 					
 					platformView.addPlatform(obj.width, obj.height, obj.x, obj.y, platformType, instanceName);
 				}
+			}
+			
+			var lastY:int = StageSize.HEIGHT / 2;
+			for(var i:int = 0; i< 100; i++)
+			{
+				lastY += int(Math.random()*12)%3 == 0 ?  50 : -50;
+				lastY += Math.random() * 50 - 25;
+				if(lastY < 50)
+					lastY = StageSize.HEIGHT - 60;
+				if(lastY > StageSize.HEIGHT - 60)
+					lastY = StageSize.HEIGHT - 120;
+				platformView.addPlatform(150,20,obj.x + i * 200 + Math.random()*100, lastY, PlatformTypes.PLATFORM_AI, "");
 			}
 			platformView.aiPlatforms = platformView.aiPlatforms.sort(sortOnName);
 			platformView.hiddingSpots = platformView.hiddingSpots.sort(sortOnName);
