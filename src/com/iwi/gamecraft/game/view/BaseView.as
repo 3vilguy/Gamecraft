@@ -8,5 +8,10 @@ package com.iwi.gamecraft.game.view
 		{
 			super();
 		}
+		
+		public function destroy():void
+		{
+			
+		}
 	}
 }

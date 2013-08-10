@@ -75,5 +75,20 @@ package com.iwi.gamecraft.game.view.background
 			
 			prevX = currX;
 		}
+		
+		public function destroy():void
+		{
+			if(bg1)
+			{
+				bg1.removeFromParent(true);
+				bg1 = null;
+			}
+			
+			if(bg2)
+			{
+				bg2.removeFromParent(true);
+				bg2 = null;
+			}
+		}
 	}
 }

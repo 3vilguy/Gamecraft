@@ -2,9 +2,7 @@ package com.iwi.gamecraft.game.hiscore
 {	
 	import com.iwi.gamecraft.game.view.scoreInterface.IHiScoreView;
 	
-	import starling.display.Button;
 	import starling.display.Sprite;
-	import starling.events.Event;
 	import starling.text.BitmapFont;
 	import starling.text.TextField;
 	
@@ -28,9 +26,15 @@ package com.iwi.gamecraft.game.hiscore
 			var	displayString:String = "";
 			displayString += hiScore.score;
 			
+<<<<<<< HEAD
 			textField = new TextField(400, 200, displayString, "Ubuntu", 18, 0x0c839f);
-			textField.x = -60 //(textField.width + 25);
+			textField.x = (textField.width + 25);
+			textField.y = -30;
+=======
+			textField = new TextField(400, 200, displayString, "Desyrel", (BitmapFont.NATIVE_SIZE * 0.75), 0xffffff);
+			textField.x = -60;//(Constants.STAGE_WIDTH - textField.width);
 			textField.y = -60;
+>>>>>>> e6774eabd71bd5991072db4e08bb72c718cc11ff
 			
 			addChild(textField);
 		}

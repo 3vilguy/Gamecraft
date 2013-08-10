@@ -72,13 +72,13 @@ package
 		
 		private function onButtonTriggeredGuy():void
 		{
-			InputController.character = "man";
+			InputController.character = "woman";
 			dispatchEventWith(START_GAME, true, "classic");
 		}
 		
 		private function onButtonTriggered():void
 		{
-			InputController.character = "woman";
+			InputController.character = "man";
 			dispatchEventWith(START_GAME, true, "classic");
 		}
 		

@@ -1,7 +1,6 @@
 package com.iwi.gamecraft.game.gameobjects.character
 {
 	import com.iwi.gamecraft.game.gameobjects.GameObject;
-	import com.iwi.gamecraft.game.gameobjects.components.IMoveController;
 	import com.iwi.gamecraft.game.gameobjects.components.MoveController;
 	import com.iwi.gamecraft.game.gameobjects.platform.Platform;
 	
@@ -24,8 +23,8 @@ package com.iwi.gamecraft.game.gameobjects.character
 		private var charImg:Image;
 
 		private var walk:Texture;
-
 		private var jump:Texture;
+		
 		
 		public function Character()
 		{
@@ -126,6 +125,15 @@ package com.iwi.gamecraft.game.gameobjects.character
 			_moveController.currentMaxVel-=SLOW_DOWN_VALUE;
 			hitTime = getTimer();
 			isSlow = true;
+		}
+		
+		public function destroy():void
+		{
+			if(charImg)
+			{
+				charImg.removeFromParent(true);
+				charImg = null;
+			}
 		}
 	}
 }
