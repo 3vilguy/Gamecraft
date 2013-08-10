@@ -6,6 +6,8 @@ package com.iwi.gamecraft.game.gameobjects.platform
 	public class PlatformView extends GameObject
 	{
 		private var _platforms:Vector.<Platform>;
+		private var _hiddingSpots:Array;
+		
 		public function PlatformView()
 		{
 			super();
@@ -15,6 +17,7 @@ package com.iwi.gamecraft.game.gameobjects.platform
 		private function init():void
 		{
 			_platforms = new Vector.<Platform>();
+			_hiddingSpots = [];
 			//addMockPlatforms();
 		}
 		
@@ -40,6 +43,8 @@ package com.iwi.gamecraft.game.gameobjects.platform
 			if(instanceName) platform.name = instanceName;
 			addChild(platform);
 			_platforms.push(platform);
+			if(_platforms.length%5)
+				_hiddingSpots.push(platform);
 		}
 		
 		
@@ -51,6 +56,13 @@ package com.iwi.gamecraft.game.gameobjects.platform
 		public function set platforms(value:Vector.<Platform>):void
 		{
 			_platforms = value;
+		}
+		
+		public function getNextHiddingSpot(index:int):Platform
+		{
+			if(index > _hiddingSpots.length)
+				return _hiddingSpots[index];
+			return _hiddingSpots[length];
 		}
 	}
 }
