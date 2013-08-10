@@ -7,6 +7,7 @@ package com.iwi.gamecraft.game.gameobjects.character
 	
 	import flash.utils.getTimer;
 	
+	import starling.display.Image;
 	import starling.display.Quad;
 	
 	public class Character extends GameObject
@@ -19,6 +20,7 @@ package com.iwi.gamecraft.game.gameobjects.character
 		private var isSlow:Boolean;
 		private var HIT_RECOVERY_TIME:int = 2500;
 		private var SLOW_DOWN_VALUE:Number = 1;;
+		private var charImg:Image;
 		
 		public function Character()
 		{
@@ -35,9 +37,13 @@ package com.iwi.gamecraft.game.gameobjects.character
 		
 		protected function addGraphic():void
 		{
-			var quad:Quad = new Quad(60,60, 0xFF0000);
+			var quad:Quad = new Quad(60,60, 0x0000FF);
 			quad.y = - 60;
-			addChild(quad);
+			//addChild(quad);
+			charImg = new Image( GameCraft.assetManager.getTexture("camera_walk_v01") );
+			charImg.scaleX = scaleY = 0.1;
+			charImg.y = -charImg.height;
+			addChild(charImg);
 		}
 		
 		protected function getMoveContorller():MoveController

@@ -3,6 +3,7 @@ package com.iwi.gamecraft.game.gameobjects.components
 	import com.iwi.gamecraft.game.InputController;
 	
 	import flash.ui.Keyboard;
+	import flash.utils.getTimer;
 	
 	import org.osflash.signals.Signal;
 
@@ -26,6 +27,8 @@ package com.iwi.gamecraft.game.gameobjects.components
 		private var _isDouleJumping:Boolean;
 		
 		protected var _sigJump:Signal;
+		private var DOUBLE_JUMP_TIME:int = 100;
+		private var lastJump:int;
 		
 		
 		public function MoveController()
@@ -69,18 +72,34 @@ package com.iwi.gamecraft.game.gameobjects.components
 		
 		protected function handleVerticalMove():void
 		{
-			if(_ySpeed == 0 && _isDouleJumping == false)
+			if(_ySpeed == 0 )
 			{
 				if(InputController.keyState(Keyboard.UP))
 				{
-					if(isJumping)
-						_isDouleJumping = true;
+					lastJump = getTimer();
 					addVerticalForce(-MOVE_UP);
 				}
+			}
+			else if(_isDouleJumping == false && getTimer() - lastJump > DOUBLE_JUMP_TIME)
+			{
+				doDoubleJump();
 			}
 			else
 			{
 				resetVerticalSpeed();
+			}
+		}
+		
+		protected function doDoubleJump():void
+		{
+			if(InputController.keyState(Keyboard.UP))
+			{
+				if(isJumping)
+				{
+					_isDouleJumping = true;
+				}
+				ySpeed = 0;
+				addVerticalForce(-MOVE_UP);
 			}
 		}
 		
@@ -172,6 +191,7 @@ package com.iwi.gamecraft.game.gameobjects.components
 		public function stopJumping():void
 		{
 			_isJumping = false;
+			_isDouleJumping = false;
 			_ySpeed = 0;
 		}
 		

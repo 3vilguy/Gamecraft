@@ -37,8 +37,9 @@ package com.iwi.gamecraft.game.gameobjects.character
 			var quad:Quad = new Quad(60,60, 0x0000FF);
 			quad.y = - 60;
 			//addChild(quad);
-			walkTexture = GameCraft.assetManager.getTexture("man_walk");
-			jumpTexture = GameCraft.assetManager.getTexture("man_jump");
+			var gender:String = Math.random() > 1 ? "man" : "woman"
+			walkTexture = GameCraft.assetManager.getTexture(gender + "_walk");
+			jumpTexture = GameCraft.assetManager.getTexture(gender + "_jump");
 			charImg = new Image( walkTexture );
 			charImg.scaleX = scaleY = 0.1;
 			charImg.y = -charImg.height;

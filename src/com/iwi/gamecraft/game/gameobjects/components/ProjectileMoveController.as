@@ -1,8 +1,6 @@
 package com.iwi.gamecraft.game.gameobjects.components
 {
-	import com.iwi.gamecraft.game.InputController;
 	
-	import flash.ui.Keyboard;
 
 	public class ProjectileMoveController extends MoveController
 	{
@@ -14,5 +12,10 @@ package com.iwi.gamecraft.game.gameobjects.components
 		override protected function handleHorizontalMove():void
 		{
 		}
+		
+		override protected function doDoubleJump():void
+		{
+		}
+
 	}
 }
