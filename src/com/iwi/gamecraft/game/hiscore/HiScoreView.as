@@ -30,16 +30,6 @@ package com.iwi.gamecraft.game.hiscore
 			addChild(textField);
 		}
 		
-		public function setScoreList(scoreList:HiScoreList):void
-		{
-			hiScoreList = scoreList;
-			
-			for (var i:int = 0; i < hiScoreList.hiScoreArray.length; i++)
-			{
-				setNewTextField(i);
-			}
-		}
-		
 		public function refreshScoreList():void
 		{
 			var i:int = 0;
@@ -61,6 +51,12 @@ package com.iwi.gamecraft.game.hiscore
 			{
 				hiScoreTextFields.pop();
 			}
+		}
+		
+		public function setScoreList(scoreList:HiScoreList):void
+		{
+			hiScoreList = scoreList;
+			refreshScoreList();
 		}
 	}
 }
