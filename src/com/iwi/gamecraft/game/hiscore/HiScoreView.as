@@ -2,9 +2,7 @@ package com.iwi.gamecraft.game.hiscore
 {	
 	import com.iwi.gamecraft.game.view.scoreInterface.IHiScoreView;
 	
-	import starling.display.Button;
 	import starling.display.Sprite;
-	import starling.events.Event;
 	import starling.text.BitmapFont;
 	import starling.text.TextField;
 	
@@ -29,8 +27,8 @@ package com.iwi.gamecraft.game.hiscore
 			displayString += hiScore.score;
 			
 			textField = new TextField(400, 200, displayString, "Desyrel", (BitmapFont.NATIVE_SIZE * 0.75), 0xffffff);
-			textField.x = (Constants.STAGE_WIDTH - textField.width);
-			textField.y = -30;
+			textField.x = -60;//(Constants.STAGE_WIDTH - textField.width);
+			textField.y = -60;
 			
 			addChild(textField);
 		}
