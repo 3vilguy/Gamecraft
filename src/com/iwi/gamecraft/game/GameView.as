@@ -16,12 +16,16 @@ package com.iwi.gamecraft.game
 		
 		private var character:Character;
 		
+		private var currentLevel:int;
 		private var levelView:LevelView;
 		
 		
 		public function GameView()
 		{
 			super();
+			
+			currentLevel = 1;
+			
 			if(stage == null)
 			{
 				addEventListener(Event.ADDED_TO_STAGE, handleStage);
@@ -53,7 +57,7 @@ package com.iwi.gamecraft.game
 
 		private function initLevel():void
 		{
-			levelView = new LevelView();
+			levelView = new LevelView(currentLevel);
 			addChild(levelView);
 
 			levelView.addCharcter(character);
