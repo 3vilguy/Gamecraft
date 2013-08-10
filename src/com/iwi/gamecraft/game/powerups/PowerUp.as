@@ -1,6 +1,10 @@
 package com.iwi.gamecraft.game.powerups
 {
-	public class PowerUp
+	
+	import starling.display.Image;
+	import starling.display.Sprite;
+
+	public class PowerUp extends Sprite
 	{
 		public static const powerUpTime:Number = 5;
 		public static var timeRemaining:Number = 0;
@@ -14,9 +18,11 @@ package com.iwi.gamecraft.game.powerups
 				
 		public function PowerUp()
 		{
-			heightAbovePlatform = 200 * Math.random();
+			heightAbovePlatform = 100 * Math.random();
 			
 			var type:int = Math.random() * 3;
+			
+			addGraphic();
 			switch (type)
 			{
 				case 0:
@@ -29,6 +35,14 @@ package com.iwi.gamecraft.game.powerups
 					powerUpType = PowerUpTypes.POWERUP_SLOW;
 					break;
 			}
+		}
+		
+		private function addGraphic():void
+		{
+			var charImg:Image = new Image( GameCraft.assetManager.getTexture("batteryicon") );
+			charImg.scaleX = scaleY = 0.1;
+			charImg.y = -charImg.height;
+			addChild(charImg);
 		}
 	}
 }

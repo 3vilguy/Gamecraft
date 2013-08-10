@@ -23,7 +23,7 @@ package com.iwi.gamecraft.game.gameobjects.projectiles
 		{
 //			 var quad:Quad = new Quad(30,30,0xAABBAA);
 //			 addChild(quad);
-			 var charImg:Image = new Image( GameCraft.assetManager.getTexture("man_walk") );
+			 var charImg:Image = new Image( GameCraft.assetManager.getTexture("poo") );
 			 charImg.scaleX = scaleY = 0.05;
 			 charImg.y = -charImg.height;
 			 addChild(charImg);

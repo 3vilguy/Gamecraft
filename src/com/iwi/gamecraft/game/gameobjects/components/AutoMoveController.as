@@ -8,7 +8,7 @@ package com.iwi.gamecraft.game.gameobjects.components
 		public function AutoMoveController()
 		{
 			super();
-			currentMaxVel = 9.5;
+			currentMaxVel = 7.5;
 		}
 		
 		public function moveRight(value:Boolean):void

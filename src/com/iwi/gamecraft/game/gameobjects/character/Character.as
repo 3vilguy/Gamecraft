@@ -7,7 +7,9 @@ package com.iwi.gamecraft.game.gameobjects.character
 	
 	import flash.utils.getTimer;
 	
+	import starling.display.Image;
 	import starling.display.Quad;
+	import starling.textures.Texture;
 	
 	public class Character extends GameObject
 	{
@@ -19,6 +21,11 @@ package com.iwi.gamecraft.game.gameobjects.character
 		private var isSlow:Boolean;
 		private var HIT_RECOVERY_TIME:int = 2500;
 		private var SLOW_DOWN_VALUE:Number = 1;;
+		private var charImg:Image;
+
+		private var walk:Texture;
+
+		private var jump:Texture;
 		
 		public function Character()
 		{
@@ -35,9 +42,15 @@ package com.iwi.gamecraft.game.gameobjects.character
 		
 		protected function addGraphic():void
 		{
-			var quad:Quad = new Quad(60,60, 0xFF0000);
+			var quad:Quad = new Quad(60,60, 0x0000FF);
 			quad.y = - 60;
-			addChild(quad);
+			//addChild(quad);
+			walk = GameCraft.assetManager.getTexture("camera_walk");
+			jump = GameCraft.assetManager.getTexture("camera_jump");
+			charImg = new Image( walk );
+			charImg.scaleX = scaleY = 0.1;
+			charImg.y = -charImg.height;
+			addChild(charImg);
 		}
 		
 		protected function getMoveContorller():MoveController
@@ -72,6 +85,14 @@ package com.iwi.gamecraft.game.gameobjects.character
 			prevY = y;
 			x += _moveController.xSpeed;
 			y += _moveController.ySpeed;
+			if(_moveController.ySpeed != 0)
+			{
+				charImg.texture = jump;
+			}
+			else
+			{
+				charImg.texture = walk;
+			}
 		}		
 		
 		public function stopJumping():void
