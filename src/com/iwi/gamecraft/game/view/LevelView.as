@@ -4,6 +4,8 @@ package com.iwi.gamecraft.game.view
 	import com.iwi.gamecraft.game.gameobjects.character.Character;
 	import com.iwi.gamecraft.game.gameobjects.platform.Platform;
 	import com.iwi.gamecraft.game.gameobjects.platform.PlatformView;
+	
+	import flash.geom.Point;
 
 	public class LevelView extends BaseView
 	{
@@ -43,16 +45,35 @@ package com.iwi.gamecraft.game.view
 				_character.stopJumping();
 			}
 			checkCollision();
+			checkCamera();
+		}
+		
+		private function checkCamera():void
+		{
+//			var local:Point = new Point();
+			
 		}
 		
 		private function checkCollision():void
 		{
 			var len:int = _platformView.platforms.length;
+			
+			if(_character.currentPlatform)
+			{
+//				trace('char x ', _character.x, _character.currentPlatform.x);
+				if(_character.x < _character.currentPlatform.x || _character.x > _character.currentPlatform.x + _character.currentPlatform.platformWidth)
+				{
+					_character.fall();
+					return;
+				}
+			}
+			
 			for (var i:int = 0;i < len; i++)
 			{
 				var platform:Platform = _platformView.platforms[i];
-				if(_character.x > platform.x && _character.x < platform.width + platform.platformWidth)
+				if(_character.x > platform.x && _character.x < platform.x + platform.platformWidth)
 				{
+					trace('got you ' );
 					if(_character.prevY < platform.y && _character.y >= platform.y)
 					{
 						_character.stopJumping();

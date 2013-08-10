@@ -84,6 +84,7 @@ package com.iwi.gamecraft.game.gameobjects.components
 		{
 			_yForce += force;
 			_isJumping = true;
+			_sigJump.dispatch();
 		}
 		
 		
@@ -117,7 +118,7 @@ package com.iwi.gamecraft.game.gameobjects.components
 			ySpeed += _yForce;
 			ySpeed = Math.min(ySpeed, MAX_VEL_Y);
 			ySpeed = Math.max(ySpeed, -MAX_VEL_Y);
-			trace('vel ' + xSpeed);
+//			trace('vel ' + xSpeed);
 		}
 		
 		private function slowDown():void
