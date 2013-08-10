@@ -6,7 +6,6 @@ package com.iwi.gamecraft.game.gameobjects.platform
 	import flash.geom.Point;
 	
 	import starling.display.Image;
-	import starling.display.Quad;
 	import starling.textures.Texture;
 	import starling.events.Event;
 	
@@ -15,7 +14,11 @@ package com.iwi.gamecraft.game.gameobjects.platform
 		private var _platformWidth:int;
 		private var _platformHeight:int;
 		private var _index:int;
+		
 		private var _powerup:PowerUp;
+		
+		private var platform:Image;
+		
 		
 		public function Platform(width:int, height:int, index:int)
 		{
@@ -34,12 +37,9 @@ package com.iwi.gamecraft.game.gameobjects.platform
 		
 		private function init():void
 		{
-			var quad:Quad = new Quad(_platformWidth,_platformHeight,0x00FF00);
-			addChild(quad);
-			
 			var texture:Texture = GameCraft.assetManager.getTexture("Tile");
 			texture.repeat = true;
-			var platform:Image = new Image( texture );
+			platform = new Image( texture );
 			platform.width = _platformWidth;
 			platform.height = _platformHeight;
 			
@@ -115,6 +115,20 @@ package com.iwi.gamecraft.game.gameobjects.platform
 		public function hide(param0:Boolean):void
 		{
 //			visible = param0;
+		}
+		
+		public function destroy():void
+		{
+			if(platform)
+			{
+				platform.removeFromParent(true);
+				platform = null;
+			}
+			
+			if(_powerup)
+			{
+				_powerup = null
+			}
 		}
 	}
 }

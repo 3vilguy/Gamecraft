@@ -49,6 +49,7 @@ package com.iwi.gamecraft.game.view
 			
 			_platformView = new PlatformViewFactory(this).getPlatformView(_currentLevel);
 			_platformContainer.addChild(_platformView);
+			_platformView.start();
 		}
 		
 		public function addCharcter(character:Character):void
